@@ -1,0 +1,73 @@
+{
+  "name": "@runablejs/mcp",
+  "version": "0.1.0",
+  "description": "Official Model Context Protocol server for Runable projects.",
+  "type": "module",
+  "bin": {
+    "runable-mcp": "./dist/bin.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": "^22.18.0 || >=24.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/runablejs/mcp.git"
+  },
+  "homepage": "https://github.com/runablejs/mcp#readme",
+  "bugs": {
+    "url": "https://github.com/runablejs/mcp/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "runable",
+    "mcp",
+    "model-context-protocol"
+  ],
+  "packageManager": "pnpm@10.15.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "runable": ">=1.0.0-alpha.3"
+  },
+  "peerDependenciesMeta": {
+    "runable": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.0.0",
+    "eslint": "^10.9.0",
+    "prettier": "^3.9.6",
+    "runable": "1.0.0-alpha.4",
+    "tsdown": "^0.22.14",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.67.0",
+    "vitest": "^4.1.11"
+  }
+}
