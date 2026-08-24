@@ -1,4 +1,4 @@
-import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+import { Client, type Tool } from "@modelcontextprotocol/client";
 import { afterEach, beforeAll, describe, expect, it } from "vitest";
 
 import { createFixtureProject } from "./helpers/fixture.js";
@@ -16,7 +16,7 @@ afterEach(async () => {
 });
 
 describe("the packaged CLI over real stdio", () => {
-  it("starts, accepts an MCP connection, and answers get_project", async () => {
+  it("starts, accepts an MCP connection, and answers all five tools", async () => {
     const expectedProject = {
       rootDir: "/workspace/my-project",
       runableVersion: "1.0.0-fixture",
@@ -28,8 +28,17 @@ describe("the packaged CLI over real stdio", () => {
         publicDir: undefined,
       },
     };
+    const expectedRoutes = [{ path: "/", file: "app/pages/index.vue" }];
+    const expectedLayouts = [
+      { name: "default", file: "app/layouts/default.vue" },
+    ];
     const project = await createFixtureProject({
-      runable: { project: expectedProject, version: "1.0.0-fixture" },
+      runable: {
+        project: expectedProject,
+        version: "1.0.0-fixture",
+        routes: expectedRoutes,
+        layouts: expectedLayouts,
+      },
     });
     cleanups.push(project.cleanup);
 
@@ -44,16 +53,45 @@ describe("the packaged CLI over real stdio", () => {
       await client.connect(transport);
 
       const { tools } = await client.listTools();
-      expect(tools.map((tool) => tool.name)).toEqual(["get_project"]);
+      expect(tools.map((tool: Tool) => tool.name)).toEqual([
+        "get_project",
+        "get_config",
+        "get_routes",
+        "get_extensions",
+        "refresh",
+      ]);
 
-      const result = await client.callTool({
+      const projectResult = await client.callTool({
         name: "get_project",
         arguments: {},
       });
-      expect(result.structuredContent).toEqual({
+      expect(projectResult.structuredContent).toEqual({
         ...expectedProject,
         publicDir: undefined,
       });
+
+      const routesResult = await client.callTool({
+        name: "get_routes",
+        arguments: {},
+      });
+      expect(routesResult.structuredContent).toEqual({
+        routes: expectedRoutes,
+      });
+
+      const extensionsResult = await client.callTool({
+        name: "get_extensions",
+        arguments: { kind: "layouts" },
+      });
+      expect(extensionsResult.structuredContent).toEqual({
+        kind: "layouts",
+        items: expectedLayouts,
+      });
+
+      const refreshResult = await client.callTool({
+        name: "refresh",
+        arguments: {},
+      });
+      expect(refreshResult.structuredContent).toEqual({ refreshed: true });
 
       // Nothing but framed JSON-RPC ever reached stdout during the session.
       expect(transport.nonProtocolLines).toEqual([]);

@@ -86,6 +86,30 @@ describe("createRunableContext", () => {
     );
   });
 
+  it("throws a clear RunableInspectorUnavailableError when the Inspector instance has no getProject()", async () => {
+    const project = await fixture({ runable: { omitMethods: ["getProject"] } });
+
+    const error: unknown = await createRunableContext(project.rootDir).catch(
+      (caught: unknown) => caught,
+    );
+
+    expect(error).toBeInstanceOf(RunableInspectorUnavailableError);
+    expect((error as Error).message).not.toContain("is not a function");
+    expect((error as Error).message).toContain("getProject");
+  });
+
+  it("names the specific missing method when the Inspector is missing a newer method (getRoutes)", async () => {
+    const project = await fixture({ runable: { omitMethods: ["getRoutes"] } });
+
+    const error: unknown = await createRunableContext(project.rootDir).catch(
+      (caught: unknown) => caught,
+    );
+
+    expect(error).toBeInstanceOf(RunableInspectorUnavailableError);
+    expect((error as Error).message).toContain("getRoutes");
+    expect((error as Error).message).not.toContain("is not a function");
+  });
+
   it("wraps a rejected createRunableInspector() call, preserving the cause", async () => {
     const project = await fixture({
       runable: { rejectWith: "no runable.config.* file found" },

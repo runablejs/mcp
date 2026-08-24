@@ -1,11 +1,13 @@
 import { z } from "zod";
-import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { McpServer } from "@modelcontextprotocol/server";
 
 import type { RunableMcpContext } from "../context.js";
+import type { RunableProjectInfo } from "../runable-inspector.js";
 
 // Mirrors `InspectorProject` from `runable/inspector` — kept in sync with it
 // manually since MCP tool output schemas can't be derived from a TS type.
-const projectOutputSchema = {
+// `assertOutputParity` below is the compile-time trip wire against drift.
+export const projectOutputSchema = z.object({
   rootDir: z
     .string()
     .describe("Absolute root directory of the inspected project."),
@@ -35,7 +37,16 @@ const projectOutputSchema = {
         ),
     })
     .describe("Key project paths, relative to rootDir."),
-};
+});
+
+/** Compiles only if `RunableProjectInfo` (this package's own contract, see
+ * runable-inspector.ts) still satisfies `projectOutputSchema`'s inferred
+ * shape — a compile-time guard against the two silently drifting apart. */
+function assertOutputParity(
+  project: RunableProjectInfo,
+): z.infer<typeof projectOutputSchema> {
+  return project;
+}
 
 export function registerGetProjectTool(
   server: McpServer,
@@ -52,12 +63,13 @@ export function registerGetProjectTool(
     },
     async () => {
       const project = await context.inspector.getProject();
+      const structuredContent = assertOutputParity(project);
 
       return {
         content: [
           { type: "text" as const, text: JSON.stringify(project, null, 2) },
         ],
-        structuredContent: { ...project },
+        structuredContent,
       };
     },
   );

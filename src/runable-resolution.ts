@@ -17,33 +17,17 @@ import { createRequire } from "node:module";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 
-import type {
-  CreateRunableInspectorOptions,
-  RunableInspector,
-} from "runable/inspector";
-
+import {
+  isCreateRunableInspector,
+  type CreateRunableInspector,
+} from "./runable-inspector.js";
 import {
   RunableInspectorUnavailableError,
   RunableNotInstalledError,
 } from "./errors.js";
 
-export type CreateRunableInspector = (
-  options?: CreateRunableInspectorOptions,
-) => Promise<RunableInspector>;
-
-interface RunableInspectorModuleShape {
-  createRunableInspector: CreateRunableInspector;
-}
-
-function isRunableInspectorModule(
-  value: unknown,
-): value is RunableInspectorModuleShape {
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    typeof (value as Record<string, unknown>).createRunableInspector ===
-      "function"
-  );
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
 }
 
 function hasErrorCode(error: unknown, code: string): boolean {
@@ -93,7 +77,11 @@ export async function resolveProjectInspectorFactory(
     pathToFileURL(inspectorEntry).href
   );
 
-  if (!isRunableInspectorModule(inspectorModule)) {
+  const createRunableInspector = isRecord(inspectorModule)
+    ? inspectorModule.createRunableInspector
+    : undefined;
+
+  if (!isCreateRunableInspector(createRunableInspector)) {
     throw new RunableInspectorUnavailableError(
       rootDir,
       new Error(
@@ -102,5 +90,5 @@ export async function resolveProjectInspectorFactory(
     );
   }
 
-  return inspectorModule.createRunableInspector;
+  return createRunableInspector;
 }

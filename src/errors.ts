@@ -20,14 +20,18 @@ export class RunableNotInstalledError extends RunableMcpError {
   }
 }
 
-/** `runable` was resolved, but it does not expose the `runable/inspector` subpath. */
+/**
+ * `runable` was resolved but is incompatible with @runablejs/mcp — either it
+ * doesn't expose the `runable/inspector` subpath at all, or the Inspector it
+ * produces doesn't have the shape this package needs (see `cause` for which).
+ */
 export class RunableInspectorUnavailableError extends RunableMcpError {
   override readonly name = "RunableInspectorUnavailableError";
 
-  constructor(rootDir: string, cause?: unknown) {
+  constructor(rootDir: string, cause: unknown) {
     super(
-      `The installed Runable version does not expose "runable/inspector" for project "${rootDir}". ` +
-        `Upgrade Runable before using @runablejs/mcp.`,
+      `The installed Runable version is incompatible with @runablejs/mcp for project "${rootDir}": ` +
+        `${causeMessage(cause)} Upgrade Runable before using @runablejs/mcp.`,
       { cause },
     );
   }

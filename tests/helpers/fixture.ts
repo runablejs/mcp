@@ -4,19 +4,14 @@
  * tests never depend on `../runable` or a real Runable installation.
  *
  * The fake `runable/inspector` module mimics only the shape
- * `@runablejs/mcp` actually relies on (`createRunableInspector()` returning
- * an object with a `getProject()` method) — enough to prove the MCP's own
- * resolution/adaptation logic, not to re-test Runable's own Inspector.
+ * `@runablejs/mcp` actually relies on — enough to prove the MCP's own
+ * resolution/adaptation logic, not to re-test Runable's own Inspector (see
+ * tests/helpers/real-runable-fixture.ts for that).
  */
 
 import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-
-export interface FixtureProjectInfo {
-  rootDir: string;
-  [key: string]: unknown;
-}
 
 export interface FixtureRunableOptions {
   /** Set to `false` to publish a `runable` package with no `./inspector` export. */
@@ -25,8 +20,27 @@ export interface FixtureRunableOptions {
   version?: string;
   /** The object the fake `getProject()` resolves to. */
   project?: Record<string, unknown>;
+  /** The object the fake `getConfig()` resolves to. */
+  config?: Record<string, unknown>;
+  /** The array the fake `getRoutes()` resolves to before `refresh()` is called. */
+  routes?: Record<string, unknown>[];
+  /** If set, `getRoutes()` switches to this array once `refresh()` has been
+   * called — lets a test prove refresh's effect without a real filesystem. */
+  routesAfterRefresh?: Record<string, unknown>[];
+  /** The array the fake `getLayouts()` resolves to. */
+  layouts?: Record<string, unknown>[];
+  /** The array the fake `getMiddlewares()` resolves to. */
+  middlewares?: Record<string, unknown>[];
+  /** The array the fake `getPlugins()` resolves to. */
+  plugins?: Record<string, unknown>[];
+  /** The array the fake `getModules()` resolves to. */
+  modules?: Record<string, unknown>[];
+  /** The object the fake `getAutoImports()` resolves to. */
+  autoImports?: Record<string, unknown>;
   /** If set, the fake `createRunableInspector()` rejects with this message. */
   rejectWith?: string;
+  /** Method names to omit entirely from the resolved Inspector instance — e.g. `["getRoutes"]` to simulate an incompatible/older Inspector missing that one method. */
+  omitMethods?: string[];
 }
 
 export interface FixtureProjectOptions {
@@ -71,26 +85,52 @@ async function writeFixtureRunablePackage(
 
   if (!exposeInspector) return;
 
-  const project = JSON.stringify(options.project ?? {});
   const rejection = options.rejectWith
     ? `throw new Error(${JSON.stringify(options.rejectWith)});`
     : "";
+  const omit = new Set(options.omitMethods ?? []);
+  const method = (name: string, body: string): string =>
+    omit.has(name) ? "" : `async ${name}() { ${body} },`;
+
+  const project = JSON.stringify(options.project ?? {});
+  const config = JSON.stringify(options.config ?? {});
+  const routes = JSON.stringify(options.routes ?? []);
+  const routesAfterRefresh = JSON.stringify(
+    options.routesAfterRefresh ?? options.routes ?? [],
+  );
+  const layouts = JSON.stringify(options.layouts ?? []);
+  const middlewares = JSON.stringify(options.middlewares ?? []);
+  const plugins = JSON.stringify(options.plugins ?? []);
+  const modules = JSON.stringify(options.modules ?? []);
+  const autoImports = JSON.stringify(
+    options.autoImports ?? { components: [], composables: [], globals: [] },
+  );
 
   await writeFile(
     join(packageDir, "inspector.js"),
     `export async function createRunableInspector(options) {
   ${rejection}
   const project = ${project};
+  const config = ${config};
+  const routesBeforeRefresh = ${routes};
+  const routesAfterRefresh = ${routesAfterRefresh};
+  const layouts = ${layouts};
+  const middlewares = ${middlewares};
+  const plugins = ${plugins};
+  const modules = ${modules};
+  const autoImports = ${autoImports};
+  let refreshed = false;
+
   return {
-    async getProject() { return project; },
-    async getConfig() { throw new Error("not implemented in fixture"); },
-    async getRoutes() { throw new Error("not implemented in fixture"); },
-    async getLayouts() { throw new Error("not implemented in fixture"); },
-    async getMiddlewares() { throw new Error("not implemented in fixture"); },
-    async getPlugins() { throw new Error("not implemented in fixture"); },
-    async getModules() { throw new Error("not implemented in fixture"); },
-    async getAutoImports() { throw new Error("not implemented in fixture"); },
-    async refresh() {},
+    ${method("getProject", "return project;")}
+    ${method("getConfig", "return config;")}
+    ${method("getRoutes", "return refreshed ? routesAfterRefresh : routesBeforeRefresh;")}
+    ${method("getLayouts", "return layouts;")}
+    ${method("getMiddlewares", "return middlewares;")}
+    ${method("getPlugins", "return plugins;")}
+    ${method("getModules", "return modules;")}
+    ${method("getAutoImports", "return autoImports;")}
+    ${method("refresh", "refreshed = true;")}
   };
 }
 `,

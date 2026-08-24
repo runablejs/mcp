@@ -8,8 +8,7 @@
 
 import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
 
-import type { JSONRPCMessage } from "@modelcontextprotocol/sdk/types.js";
-import type { Transport } from "@modelcontextprotocol/sdk/shared/transport.js";
+import type { JSONRPCMessage, Transport } from "@modelcontextprotocol/client";
 
 export class SniffingStdioClientTransport implements Transport {
   onclose?: () => void;

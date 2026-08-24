@@ -1,9 +1,15 @@
 import { resolve as resolvePath } from "node:path";
 
-import type { RunableInspector } from "runable/inspector";
-
-import { RunableProjectError } from "./errors.js";
+import {
+  RunableInspectorUnavailableError,
+  RunableProjectError,
+} from "./errors.js";
 import { resolveProjectInspectorFactory } from "./runable-resolution.js";
+import {
+  findMissingInspectorMethod,
+  isRunableInspectorLike,
+  type RunableInspectorLike,
+} from "./runable-inspector.js";
 
 /**
  * The Runable project this MCP server instance was started against — a
@@ -11,7 +17,7 @@ import { resolveProjectInspectorFactory } from "./runable-resolution.js";
  */
 export interface RunableMcpContext {
   rootDir: string;
-  inspector: RunableInspector;
+  inspector: RunableInspectorLike;
 }
 
 export async function createRunableContext(
@@ -21,11 +27,26 @@ export async function createRunableContext(
   const createRunableInspector =
     await resolveProjectInspectorFactory(resolvedRootDir);
 
-  let inspector: RunableInspector;
+  // `createRunableInspector`'s own declared return type already claims
+  // `RunableInspectorLike` — but that type is only as trustworthy as the
+  // dynamic import that produced the function itself, so the actual value
+  // is re-verified below rather than trusted on the type's word alone.
+  let inspector: unknown;
   try {
     inspector = await createRunableInspector({ rootDir: resolvedRootDir });
   } catch (error) {
     throw new RunableProjectError(resolvedRootDir, error);
+  }
+
+  if (!isRunableInspectorLike(inspector)) {
+    const missingMethod = findMissingInspectorMethod(inspector);
+    throw new RunableInspectorUnavailableError(
+      resolvedRootDir,
+      new Error(
+        `The installed Runable Inspector is incompatible with this version of @runablejs/mcp. ` +
+          `Missing method: ${missingMethod}().`,
+      ),
+    );
   }
 
   return { rootDir: resolvedRootDir, inspector };

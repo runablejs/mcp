@@ -6,20 +6,42 @@
  * after npm publish": wrong `files`, a stripped shebang, a bin resolution
  * that only worked by accident from inside this repo, etc.
  *
- * The tarball's own runtime dependencies (`@modelcontextprotocol/sdk`,
- * `zod`) are symlinked in from this repo's own `node_modules` instead of
+ * The tarball is *extracted* (not symlinked) straight into the consumer's
+ * `node_modules/@runablejs/mcp` — a real npm install never symlinks a leaf
+ * package, and Node's ESM resolver walks up from a module's *real* path to
+ * find node_modules siblings, so a symlink pointing outside any
+ * node_modules tree (e.g. a bare temp dir) would silently break resolution
+ * of the package's own dependencies. `@modelcontextprotocol/server` and
+ * `zod` are symlinked in from this repo's own `node_modules` instead of
  * being fetched from the registry, so this test stays hermetic — it proves
  * the packaging/resolution shape, not npm's own install behavior.
+ * `@modelcontextprotocol/server`'s own transitive dependency on
+ * `@modelcontextprotocol/core` resolves on its own once Node follows that
+ * symlink into pnpm's store, where the real `server` package already sits
+ * next to its own private `node_modules`.
+ *
+ * This also stands in for section 13's "MCP package works without its own
+ * Runable installation" requirement: nothing here installs `runable` next
+ * to `@runablejs/mcp` — only inside the consumer project it targets via
+ * `--cwd`/default cwd, proving "MCP installation" and "Runable project
+ * installation" are two independent trees.
  */
 
 import { execFile } from "node:child_process";
 import { existsSync } from "node:fs";
-import { mkdir, mkdtemp, rm, symlink } from "node:fs/promises";
+import {
+  mkdir,
+  mkdtemp,
+  readFile,
+  rename,
+  rm,
+  symlink,
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { promisify } from "node:util";
 
-import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+import { Client } from "@modelcontextprotocol/client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 import {
@@ -52,9 +74,6 @@ beforeAll(async () => {
     );
   }
 
-  await execFileAsync("tar", ["xf", tarballPath, "-C", workDir]);
-  extractedPackageDir = join(workDir, "package");
-
   const expectedProject = {
     rootDir: "unused",
     runableVersion: "1.0.0-tarball-fixture",
@@ -66,27 +85,31 @@ beforeAll(async () => {
   });
 
   // Lay out node_modules exactly the way a package manager would: the
-  // extracted tarball under its scoped package name, its own runtime deps
-  // symlinked in (from this repo's install, to stay offline), and a `.bin`
+  // extracted tarball as a real directory under its scoped package name
+  // (not a symlink — see the module doc above), its runtime deps
+  // (@modelcontextprotocol/server, zod) reachable next to it, and a `.bin`
   // entry pointing at its declared `bin` file.
-  const scopeDir = join(consumerProject.rootDir, "node_modules", "@runablejs");
-  await mkdir(scopeDir, { recursive: true });
-  await symlink(extractedPackageDir, join(scopeDir, "mcp"), "dir");
+  const nodeModulesDir = join(consumerProject.rootDir, "node_modules");
+  const mcpScopeDir = join(nodeModulesDir, "@runablejs");
+  await mkdir(mcpScopeDir, { recursive: true });
+  await execFileAsync("tar", ["xf", tarballPath, "-C", mcpScopeDir]);
+  extractedPackageDir = join(mcpScopeDir, "mcp");
+  await rename(join(mcpScopeDir, "package"), extractedPackageDir);
 
-  const nestedNodeModules = join(scopeDir, "mcp", "node_modules");
-  await mkdir(nestedNodeModules, { recursive: true });
+  const mcpProtocolScopeDir = join(nodeModulesDir, "@modelcontextprotocol");
+  await mkdir(mcpProtocolScopeDir, { recursive: true });
   await symlink(
-    join(repoRoot, "node_modules", "@modelcontextprotocol"),
-    join(nestedNodeModules, "@modelcontextprotocol"),
+    join(repoRoot, "node_modules", "@modelcontextprotocol", "server"),
+    join(mcpProtocolScopeDir, "server"),
     "dir",
   );
   await symlink(
     join(repoRoot, "node_modules", "zod"),
-    join(nestedNodeModules, "zod"),
+    join(nodeModulesDir, "zod"),
     "dir",
   );
 
-  const binDir = join(consumerProject.rootDir, "node_modules", ".bin");
+  const binDir = join(nodeModulesDir, ".bin");
   await mkdir(binDir, { recursive: true });
   await symlink(
     join(extractedPackageDir, "dist", "bin.js"),
@@ -109,6 +132,15 @@ describe("the pnpm pack tarball, installed like a real dependency", () => {
     expect(existsSync(join(extractedPackageDir, "dist", "index.d.ts"))).toBe(
       true,
     );
+  });
+
+  it("does not publish a public .d.ts that imports from runable or runable/inspector", async () => {
+    const dts = await readFile(
+      join(extractedPackageDir, "dist", "index.d.ts"),
+      "utf8",
+    );
+
+    expect(dts).not.toMatch(/from\s+["']runable(\/|["'])/);
   });
 
   it("runs via its installed bin, resolves the consumer project's runable, and answers get_project", async () => {

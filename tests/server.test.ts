@@ -1,5 +1,5 @@
-import { Client } from "@modelcontextprotocol/sdk/client/index.js";
-import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
+import { Client, type Tool } from "@modelcontextprotocol/client";
+import { InMemoryTransport } from "@modelcontextprotocol/server";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { createRunableContext } from "../src/context.js";
@@ -42,14 +42,20 @@ describe("createRunableMcpServer", () => {
     expect(MCP_SERVER_VERSION).toMatch(/^\d+\.\d+\.\d+/);
   });
 
-  it("registers exactly the get_project tool", async () => {
+  it("registers exactly the five introspection tools", async () => {
     const project = await createFixtureProject({ runable: { project: {} } });
     cleanups.push(project.cleanup);
 
     const { client } = await connectServerAndClient(project.rootDir);
     const { tools } = await client.listTools();
 
-    expect(tools.map((tool) => tool.name)).toEqual(["get_project"]);
+    expect(tools.map((tool: Tool) => tool.name)).toEqual([
+      "get_project",
+      "get_config",
+      "get_routes",
+      "get_extensions",
+      "refresh",
+    ]);
   });
 
   it("get_project returns exactly inspector.getProject()'s result", async () => {
