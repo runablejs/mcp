@@ -19,7 +19,7 @@ export const DOCS_INDEX_META: DocsIndexMeta = {
 export const DOCS_INDEX: DocsIndexEntry[] = [
   {
     title: "ClientOnly",
-    url: "https://runable.netlify.app/docs/api/components/client-only",
+    url: "https://runablejs.com/docs/api/components/client-only",
     section: "Render browser-dependent content only after Vue has mounted.",
     excerpt:
       '`ClientOnly` prevents its default slot from being rendered on the server. Use it for libraries that access `window`, the DOM, or browser-only APIs. ```vue <ClientOnly fallback="Loading…" fallback-tag="span"> <BrowserChar…',
@@ -29,7 +29,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "ClientOnly",
-    url: "https://runable.netlify.app/docs/api/components/client-only",
+    url: "https://runablejs.com/docs/api/components/client-only",
     section: "Props",
     excerpt:
       "| Prop | Type | Description | | --- | --- | --- | | `fallback` | `string` | Text displayed before mounting | | `fallbackTag` | `string` | Fallback element, `span` by default | | `placeholder` | `string` | Alias for `fall…",
@@ -39,7 +39,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Components",
-    url: "https://runable.netlify.app/docs/api/components/index",
+    url: "https://runablejs.com/docs/api/components/index",
     section:
       "Reference for the global components built into the Runable runtime.",
     excerpt:
@@ -50,7 +50,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "RunableLayout",
-    url: "https://runable.netlify.app/docs/api/components/runable-layout",
+    url: "https://runablejs.com/docs/api/components/runable-layout",
     section: "Load and apply the layout selected in the route metadata.",
     excerpt:
       "`RunableLayout` reads `route.meta.layout`, loads the matching layout, then renders its default slot inside it. ```vue <template> <RunableLayout> <RunablePage /> </RunableLayout> </template> ``` Select the layout from a p…",
@@ -60,7 +60,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "RunableLink",
-    url: "https://runable.netlify.app/docs/api/components/runable-link",
+    url: "https://runablejs.com/docs/api/components/runable-link",
     section: "Create typed links that navigate with Vue Router.",
     excerpt:
       '`RunableLink` wraps `RouterLink` and preserves its props, HTML attributes, and slots. ```vue <RunableLink to="/projects">Projects</RunableLink> ```',
@@ -70,7 +70,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "RunableLink",
-    url: "https://runable.netlify.app/docs/api/components/runable-link",
+    url: "https://runablejs.com/docs/api/components/runable-link",
     section: "Main props",
     excerpt:
       "| Prop | Type | Description | | --- | --- | --- | | `to` | `RouteLocationRaw` | Link destination | | `replace` | `boolean` | Replaces the current history entry | | `custom` | `boolean` | Disables the automatic `<a>` elem…",
@@ -80,7 +80,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "RunablePage",
-    url: "https://runable.netlify.app/docs/api/components/runable-page",
+    url: "https://runablejs.com/docs/api/components/runable-page",
     section:
       "Display the component associated with the current Vue Router route.",
     excerpt:
@@ -91,7 +91,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "RunablePage",
-    url: "https://runable.netlify.app/docs/api/components/runable-page",
+    url: "https://runablejs.com/docs/api/components/runable-page",
     section: "Props",
     excerpt:
       "| Prop | Type | Description | | --- | --- | --- | | `name` | `string` | Name of the view to display for a named route | | `route` | `RouteLocationNormalized` | Route to render instead of the current route | The default s…",
@@ -101,7 +101,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Composables",
-    url: "https://runable.netlify.app/docs/api/composables/index",
+    url: "https://runablejs.com/docs/api/composables/index",
     section:
       "Reference for the auto-imported Runable, Vue Router, Unhead, and Schema.org composables.",
     excerpt:
@@ -112,7 +112,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "injectHead",
-    url: "https://runable.netlify.app/docs/api/composables/inject-head",
+    url: "https://runablejs.com/docs/api/composables/inject-head",
     section:
       "Access the Unhead instance installed in the application directly.",
     excerpt:
@@ -123,7 +123,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "navigateTo",
-    url: "https://runable.netlify.app/docs/api/composables/navigate-to",
+    url: "https://runablejs.com/docs/api/composables/navigate-to",
     section:
       "Navigate to another route from a component, composable, or plugin.",
     excerpt:
@@ -134,7 +134,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "onBeforeRouteUpdate",
-    url: "https://runable.netlify.app/docs/api/composables/on-before-route-update",
+    url: "https://runablejs.com/docs/api/composables/on-before-route-update",
     section:
       "Register a guard that is removed automatically when its Vue scope ends.",
     excerpt:
@@ -145,7 +145,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useAppError",
-    url: "https://runable.netlify.app/docs/api/composables/use-app-error",
+    url: "https://runablejs.com/docs/api/composables/use-app-error",
     section: "Read, display, and clear errors captured by the Vue application.",
     excerpt:
       "```ts const { error, showError, clearError } = useAppError(); ``` | Property | Type | Purpose | | --- | --- | --- | | `error` | `ShallowRef<AppError \\| null>` | Active error | | `showError()` | `(error, options?) => AppE…",
@@ -155,7 +155,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useApp",
-    url: "https://runable.netlify.app/docs/api/composables/use-app",
+    url: "https://runablejs.com/docs/api/composables/use-app",
     section:
       "Retrieve the current Vue application, its global properties, and Runable hooks.",
     excerpt:
@@ -166,7 +166,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useAsyncData",
-    url: "https://runable.netlify.app/docs/api/composables/use-async-data",
+    url: "https://runablejs.com/docs/api/composables/use-async-data",
     section: "Load, cache, and hydrate asynchronous data during SSR.",
     excerpt:
       "```ts function useAsyncData<Data, TransformedData = Data>( key: string, fetcher: (signal?: AbortSignal) => Promise<Data>, options?: AsyncDataOptions<Data, TransformedData>, ): AsyncDataResult<TransformedData, Error> & Pr…",
@@ -176,7 +176,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useAsyncData",
-    url: "https://runable.netlify.app/docs/api/composables/use-async-data",
+    url: "https://runablejs.com/docs/api/composables/use-async-data",
     section: "Options",
     excerpt:
       "| Option | Default | Purpose | | --- | --- | --- | | `server` | `true` | Allows execution during SSR | | `lazy` | `false` | Does not wait for the result before completing the render | | `immediate` | `true` | Starts the…",
@@ -186,7 +186,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useConfig",
-    url: "https://runable.netlify.app/docs/api/composables/use-config",
+    url: "https://runablejs.com/docs/api/composables/use-config",
     section:
       "Read the public part of the Runable configuration in the Vue application.",
     excerpt:
@@ -197,7 +197,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useFetch",
-    url: "https://runable.netlify.app/docs/api/composables/use-fetch",
+    url: "https://runablejs.com/docs/api/composables/use-fetch",
     section: "Retrieve the ofetch HTTP client exposed by Runable.",
     excerpt:
       '```ts function useFetch(): typeof $fetch ``` `useFetch()` currently returns the `ofetch` client used by `$fetch`. ```ts const fetcher = useFetch(); const projects = await fetcher<Project[]>("/api/projects"); ``` ::u-tip…',
@@ -207,7 +207,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useHeadSafe",
-    url: "https://runable.netlify.app/docs/api/composables/use-head-safe",
+    url: "https://runablejs.com/docs/api/composables/use-head-safe",
     section: "Add only tags and attributes allowed by Unhead's safe policy.",
     excerpt:
       '`useHeadSafe()` works like `useHead()`, but filters potentially dangerous entries. ```ts useHeadSafe({ title: "Profile", meta: [ { name: "description", content: profile.value.summary }, ], }); ``` Choose this function wh…',
@@ -217,7 +217,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useHead",
-    url: "https://runable.netlify.app/docs/api/composables/use-head",
+    url: "https://runablejs.com/docs/api/composables/use-head",
     section: "Add reactive tags to the document head with Unhead.",
     excerpt:
       '```ts useHead({ title: "Projects", meta: [ { name: "description", content: "Project list" }, ], link: [ { rel: "canonical", href: "https://example.com/projects" }, ], }); ``` Values can be reactive: ```ts const project =…',
@@ -227,7 +227,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useRoute",
-    url: "https://runable.netlify.app/docs/api/composables/use-route",
+    url: "https://runablejs.com/docs/api/composables/use-route",
     section: "Read the currently resolved Vue Router route.",
     excerpt:
       "`useRoute()` returns the current reactive route with the Vue Router signature. ```ts const route = useRoute(); const projectId = computed(() => String(route.params.id)); ``` The result includes `path`, `name`, `params`,…",
@@ -237,7 +237,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useRouter",
-    url: "https://runable.netlify.app/docs/api/composables/use-router",
+    url: "https://runablejs.com/docs/api/composables/use-router",
     section:
       "Access the Vue Router instance installed in the Runable application.",
     excerpt:
@@ -248,7 +248,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useRuntime",
-    url: "https://runable.netlify.app/docs/api/composables/use-runtime",
+    url: "https://runablejs.com/docs/api/composables/use-runtime",
     section:
       "Access public and private environment variables loaded by Runable.",
     excerpt:
@@ -259,7 +259,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useSchemaOrg",
-    url: "https://runable.netlify.app/docs/api/composables/use-schema-org",
+    url: "https://runablejs.com/docs/api/composables/use-schema-org",
     section: "Add Schema.org structured data to the document with Unhead.",
     excerpt:
       '`useSchemaOrg()` registers Schema.org nodes and generates their JSON-LD representation in the head. ```ts useSchemaOrg([ defineWebSite({ name: "Runable", url: "https://example.com", }), defineWebPage({ name: "Documentati…',
@@ -269,7 +269,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "useSeoMeta",
-    url: "https://runable.netlify.app/docs/api/composables/use-seo-meta",
+    url: "https://runablejs.com/docs/api/composables/use-seo-meta",
     section: "Declare SEO metadata with a flat, typed API.",
     excerpt:
       '`useSeoMeta()` simplifies the creation of SEO, Open Graph, and Twitter tags. ```ts useSeoMeta({ title: "Runable", description: "A Vue framework for your backend.", ogTitle: "Runable", ogDescription: "A Vue framework for…',
@@ -279,7 +279,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "definePageMeta",
-    url: "https://runable.netlify.app/docs/api/globals/define-page-meta",
+    url: "https://runablejs.com/docs/api/globals/define-page-meta",
     section:
       "Associate a layout, middleware, and Vue Router metadata with a page.",
     excerpt:
@@ -290,7 +290,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "defineVueMiddleware",
-    url: "https://runable.netlify.app/docs/api/globals/define-vue-middleware",
+    url: "https://runablejs.com/docs/api/globals/define-vue-middleware",
     section: "Declare one or more typed navigation middleware functions.",
     excerpt:
       "```ts function defineVueMiddleware( middleware: VueRouterMiddleware | VueRouterMiddleware[], ): VueRouterMiddleware[] ``` ```ts // app/middlewares/auth.ts export default defineVueMiddleware((to) => { const user = useCurr…",
@@ -300,7 +300,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "defineVuePlugin",
-    url: "https://runable.netlify.app/docs/api/globals/define-vue-plugin",
+    url: "https://runablejs.com/docs/api/globals/define-vue-plugin",
     section:
       "Declare a Runable plugin with injections, dependencies, and application hooks.",
     excerpt:
@@ -311,7 +311,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "$fetch",
-    url: "https://runable.netlify.app/docs/api/globals/dollar-fetch",
+    url: "https://runablejs.com/docs/api/globals/dollar-fetch",
     section: "Send HTTP requests with the auto-imported ofetch client.",
     excerpt:
       '`$fetch` is a direct reference to `ofetch`. ```ts const project = await $fetch<Project>("/api/projects/42"); ``` ```ts const created = await $fetch<Project>("/api/projects", { method: "POST", body: { name: "Documentation…',
@@ -321,7 +321,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Globals",
-    url: "https://runable.netlify.app/docs/api/globals/index",
+    url: "https://runablejs.com/docs/api/globals/index",
     section:
       "Reference for global functions injected automatically by Runable.",
     excerpt:
@@ -332,7 +332,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Vue APIs",
-    url: "https://runable.netlify.app/docs/api/globals/vue-apis",
+    url: "https://runablejs.com/docs/api/globals/vue-apis",
     section:
       "Use common Vue functions without manual imports in a Runable application.",
     excerpt:
@@ -343,7 +343,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Vue APIs",
-    url: "https://runable.netlify.app/docs/api/globals/vue-apis",
+    url: "https://runablejs.com/docs/api/globals/vue-apis",
     section: "Reactivity",
     excerpt:
       "`ref`, `shallowRef`, `reactive`, `shallowReactive`, `readonly`, `computed`, `watch`, `watchEffect`, `watchPostEffect`, `watchSyncEffect`, `toRef`, `toRefs`, `toValue`, `unref`, `isRef`, `isReactive`, `isReadonly`, `isPro…",
@@ -353,7 +353,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Vue APIs",
-    url: "https://runable.netlify.app/docs/api/globals/vue-apis",
+    url: "https://runablejs.com/docs/api/globals/vue-apis",
     section: "Lifecycle",
     excerpt:
       "`onMounted`, `onBeforeMount`, `onUpdated`, `onBeforeUpdate`, `onUnmounted`, `onBeforeUnmount`, `onActivated`, `onDeactivated`, `onErrorCaptured`, `onServerPrefetch`, `onRenderTracked`, and `onRenderTriggered`.",
@@ -363,7 +363,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Vue APIs",
-    url: "https://runable.netlify.app/docs/api/globals/vue-apis",
+    url: "https://runablejs.com/docs/api/globals/vue-apis",
     section: "Components and context",
     excerpt:
       "`defineComponent`, `defineAsyncComponent`, `h`, `inject`, `provide`, `nextTick`, `getCurrentInstance`, `useAttrs`, `useSlots`, `useTemplateRef`, `useId`, `resolveComponent`, `withDirectives`, `withModifiers`, and `withKe…",
@@ -373,7 +373,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "API",
-    url: "https://runable.netlify.app/docs/api/index",
+    url: "https://runablejs.com/docs/api/index",
     section:
       "Reference for the components, composables, and global functions provided by Runable.",
     excerpt:
@@ -384,7 +384,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section:
       "Understand the backend, Runable engine, Vue application, generated files, and SSR lifecycle.",
     excerpt:
@@ -395,7 +395,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "Three responsibilities",
     excerpt:
       "| Layer | Responsibility | | --- | --- | | Your backend | Listen on the network, run API routes, and handle application logic | | Runable | Prepare the application, generate conventions, and produce the frontend response…",
@@ -405,7 +405,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "The backend remains the entry point",
     excerpt:
       'Runable does not automatically start your application server. You create the server, then forward frontend requests to it. ```ts // server.ts import Express from "express"; import { express } from "runable/adapters/expre…',
@@ -415,7 +415,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "Adapters for each backend",
     excerpt:
       "Each adapter initializes Runable once and translates framework objects for the rendering engine: | Adapter | Environment | | --- | --- | | `express()` | Express middleware | | `fastify()` | Fastify plugin | | `hono()` |…",
@@ -425,7 +425,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "Connect other backends",
     excerpt:
       'Always place the adapter after API routes or as the router\'s final fallback. ::u-code-group ```ts [Express] import Express from "express"; import { express } from "runable/adapters/express"; const app = Express(); app.us…',
@@ -435,7 +435,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "Conventions become generated code",
     excerpt:
       "At startup, Runable reads `runable.config.ts`, resolves paths, and configures several Vite plugins. ```text app/pages/ ──► Vue Router routes app/layouts/ ──► layout registry app/components/ ──► available components app/c…",
@@ -445,7 +445,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "One Vue application per server render",
     excerpt:
       "For every SSR render, Runable creates a new Vue application, then installs the router, layouts, plugins, data manager, and Unhead. This isolation prevents request-specific state from being shared with another user. ```te…",
@@ -455,7 +455,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "The SSR lifecycle",
     excerpt:
       'When `ssr` is `true`, a request follows these steps: <div class="py-3 space-y-2"> <div class="flex flex-wrap items-center gap-2"><u-icon name="tabler:circle-1-filled" class="size-5 text-muted-foreground"></u-icon><span>t…',
@@ -465,7 +465,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "Pages and metadata",
     excerpt:
       "A file in `app/pages/` becomes a route: ```text app/pages/ ├── index.vue → / ├── account.vue → /account ├── users/[id].vue → /users/:id └── docs/[...slug].vue → /docs/:slug* ``` `definePageMeta()` supplements file-name c…",
@@ -475,7 +475,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "Plugins and modules",
     excerpt:
       'A plugin runs when the Vue application is created. It can provide values, register hooks, or install a client integration. ```ts // app/plugins/api.ts export default defineVuePlugin(() => { return { provide: { apiBase: "…',
@@ -485,7 +485,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "Development and production",
     excerpt:
       "In development, `createRunableApp()` returns a Vite instance in middleware mode. Your backend uses it for HMR and module transformation. In production, `createRunableApp()` loads configuration without creating a Vite ser…",
@@ -495,7 +495,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Concepts",
-    url: "https://runable.netlify.app/docs/getting-started/concepts",
+    url: "https://runablejs.com/docs/getting-started/concepts",
     section: "Mental model",
     excerpt:
       "Remember this rule: your backend owns HTTP, Runable owns application assembly, and Vue owns the interface. ::u-tip --- variant: success title: Getting Started complete --- You can now browse the Structure section to unde…",
@@ -505,7 +505,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section:
       "Configure directories, SSR, metadata, aliases, modules, and Vite options for your application.",
     excerpt:
@@ -516,7 +516,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Minimal configuration",
     excerpt:
       'Place this file at the project root: ```ts // runable.config.ts import { defineConfig } from "runable"; export default defineConfig({}); ``` `defineConfig()` preserves the object while providing TypeScript types and auto…',
@@ -526,7 +526,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Default values",
     excerpt:
       "Without additional options, Runable uses this structure: | Option | Type | Default | Purpose | | --- | --- | --- | --- | | `appDir` | `string` | `app` | Root of Vue sources | | `output` | `string` | `.app` | Files genera…",
@@ -536,7 +536,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Define main directories",
     excerpt:
       '```ts // runable.config.ts import { defineConfig } from "runable"; export default defineConfig({ appDir: "frontend", output: ".runable", distdir: "dist", publicDir: "static", }); ``` Use `publicDir: false` when your back…',
@@ -546,7 +546,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Enable or disable SSR",
     excerpt:
       "```ts export default defineConfig({ ssr: false, }); ``` With `ssr: false`, Runable returns the HTML document without rendering the Vue tree on the server. The client then creates the application in the browser. | Mode |…",
@@ -556,7 +556,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Configure HTML metadata",
     excerpt:
       '```ts export default defineConfig({ siteUrl: "https://example.com", head: { title: "My application", meta: [ { name: "description", content: "A Vue application rendered with Runable.", }, ], link: [{ rel: "icon", href: "…',
@@ -566,7 +566,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Add global styles",
     excerpt:
       '```ts export default defineConfig({ css: ["./app/css/reset.css", "./app/css/main.css"], }); ``` The `css` array accepts files Vite can process. Install the matching preprocessor when using Sass, Less, or Stylus.',
@@ -576,7 +576,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Define aliases",
     excerpt:
       '```ts import { join } from "node:path"; export default defineConfig({ alias: { "@": join(import.meta.dirname, "app"), "@shared": join(import.meta.dirname, "shared"), }, }); ``` Runable also adds the internal `#build` ali…',
@@ -586,7 +586,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Extend scanned directories",
     excerpt:
       'Replace conventional locations with your own paths: ```ts export default defineConfig({ pages: ["./frontend/views"], layouts: ["./frontend/shells"], composables: ["./frontend/composables", "./shared/composables"], global…',
@@ -596,7 +596,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Configure components",
     excerpt:
       'An object entry controls the generated name: ```ts export default defineConfig({ components: [ "./app/components", { dirs: "./app/components/ui", prefix: "Ui", pathPrefix: false, }, ], }); ``` `app/components/ui/Button.v…',
@@ -606,7 +606,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Load modules",
     excerpt:
       '```ts export default defineConfig({ modules: ["@acme/runable-auth", "./modules/content"], auth: { redirectTo: "/login", }, }); ``` A module can add its own pages, components, layouts, plugins, or Vite options. Module-spe…',
@@ -616,7 +616,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Extend Vite",
     excerpt:
       '```ts import inspect from "vite-plugin-inspect"; export default defineConfig({ vite: { plugins: [inspect()], define: { __BUILD_TARGET__: JSON.stringify("web"), }, }, }); ``` Runable merges this with its internal Vite con…',
@@ -626,7 +626,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Configuration",
-    url: "https://runable.netlify.app/docs/getting-started/configuration",
+    url: "https://runablejs.com/docs/getting-started/configuration",
     section: "Complete example",
     excerpt:
       '```ts import { join } from "node:path"; import { defineConfig } from "runable"; export default defineConfig({ appDir: "app", output: ".app", distdir: ".output", publicDir: "public", ssr: true, siteUrl: "https://example.c…',
@@ -636,7 +636,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Installation",
-    url: "https://runable.netlify.app/docs/getting-started/installation",
+    url: "https://runablejs.com/docs/getting-started/installation",
     section:
       "Install Runable in an existing backend project and prepare a minimal Vue application with Express.",
     excerpt:
@@ -647,7 +647,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Installation",
-    url: "https://runable.netlify.app/docs/getting-started/installation",
+    url: "https://runablejs.com/docs/getting-started/installation",
     section: "Prerequisites",
     excerpt:
       "Use a Node.js version supported by `runable`: | Tool | Version | | --- | --- | | Node.js | `22.18.0` or newer, or `24.12.0` and later | | Vue | `3.5` or newer | This page uses Express and TypeScript. The same principle a…",
@@ -657,7 +657,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Installation",
-    url: "https://runable.netlify.app/docs/getting-started/installation",
+    url: "https://runablejs.com/docs/getting-started/installation",
     section: "Install dependencies",
     excerpt:
       "::u-code-group ```bash [pnpm] pnpm add runable vue vue-router express pnpm add -D @runablejs/cli tsx typescript @types/node @types/express ``` ```bash [npm] npm install runable vue vue-router express npm install --save-d…",
@@ -667,7 +667,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Installation",
-    url: "https://runable.netlify.app/docs/getting-started/installation",
+    url: "https://runablejs.com/docs/getting-started/installation",
     section: "Add scripts",
     excerpt:
       'Configure development, type preparation, and the production build: ```json { "type": "module", "scripts": { "dev": "tsx watch server.ts", "app:prepare": "runable prepare", "app:build": "runable build" } } ``` `runable pr…',
@@ -677,7 +677,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Installation",
-    url: "https://runable.netlify.app/docs/getting-started/installation",
+    url: "https://runablejs.com/docs/getting-started/installation",
     section: "Create the configuration",
     excerpt:
       'Add `runable.config.ts` at the project root: ```ts // runable.config.ts import { defineConfig } from "runable"; export default defineConfig({ ssr: true, }); ``` With this minimal configuration, Runable uses these convent…',
@@ -687,7 +687,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Installation",
-    url: "https://runable.netlify.app/docs/getting-started/installation",
+    url: "https://runablejs.com/docs/getting-started/installation",
     section: "Create the first page",
     excerpt:
       "```vue <!-- app/pages/index.vue --> <template> <main> <h1>Hello Runable</h1> <p>This page is generated from app/pages/index.vue.</p> </main> </template> ``` You do not need to declare the `/` route. Runable creates it fr…",
@@ -697,7 +697,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Installation",
-    url: "https://runable.netlify.app/docs/getting-started/installation",
+    url: "https://runablejs.com/docs/getting-started/installation",
     section: "Connect Express to Runable",
     excerpt:
       '```ts // server.ts import Express from "express"; import { express } from "runable/adapters/express"; const server = Express(); server.get("/api/health", (_req, res) => { res.json({ status: "ok" }); }); // The adapter in…',
@@ -707,7 +707,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Installation",
-    url: "https://runable.netlify.app/docs/getting-started/installation",
+    url: "https://runablejs.com/docs/getting-started/installation",
     section: "Install only your backend",
     excerpt:
       "Supported frameworks are not runtime dependencies of `runable`. Install the one used by your application: | Adapter | Consuming project dependency | | --- | --- | | `express()` | `express` | | `fastify()` | `fastify` | |…",
@@ -717,7 +717,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Installation",
-    url: "https://runable.netlify.app/docs/getting-started/installation",
+    url: "https://runablejs.com/docs/getting-started/installation",
     section: "Start the project",
     excerpt:
       "```bash pnpm app:prepare pnpm dev ``` Open `http://localhost:3000`. The page should display “Hello Runable”. ::u-tip --- variant: warning title: Alpha CLI --- The interactive `create-runable` command exists, but its star…",
@@ -727,7 +727,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Quick Start",
-    url: "https://runable.netlify.app/docs/getting-started/quickstart",
+    url: "https://runablejs.com/docs/getting-started/quickstart",
     section:
       "Create a Runable application with two pages, a layout, an API route, and server-rendered data.",
     excerpt:
@@ -738,7 +738,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Quick Start",
-    url: "https://runable.netlify.app/docs/getting-started/quickstart",
+    url: "https://runablejs.com/docs/getting-started/quickstart",
     section: "Add an API route",
     excerpt:
       'Replace `server.ts` with this example: ```ts // server.ts import Express from "express"; import { express } from "runable/adapters/express"; const server = Express(); server.get("/api/projects", (_req, res) => { res.json…',
@@ -748,7 +748,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Quick Start",
-    url: "https://runable.netlify.app/docs/getting-started/quickstart",
+    url: "https://runablejs.com/docs/getting-started/quickstart",
     section: "Create a layout",
     excerpt:
       '```vue <!-- app/layouts/default.vue --> <template> <div> <header> <strong>My application</strong> <nav> <RouterLink to="/">Home</RouterLink> <RouterLink to="/projects">Projects</RouterLink> </nav> </header> <main> <slot…',
@@ -758,7 +758,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Quick Start",
-    url: "https://runable.netlify.app/docs/getting-started/quickstart",
+    url: "https://runablejs.com/docs/getting-started/quickstart",
     section: "Create the home page",
     excerpt:
       "```vue <!-- app/pages/index.vue --> <template> <section> <h1>Welcome</h1> <p>The Express backend and Vue application live in the same project.</p> </section> </template> ``` `app/pages/index.vue` automatically maps to `/…",
@@ -768,7 +768,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Quick Start",
-    url: "https://runable.netlify.app/docs/getting-started/quickstart",
+    url: "https://runablejs.com/docs/getting-started/quickstart",
     section: "Load data",
     excerpt:
       'Create a second page: ```vue <!-- app/pages/projects.vue --> <script setup lang="ts"> type Project = { id: number; name: string; }; const { data: projects, pending, error, refresh } = await useAsyncData( "projects", asyn…',
@@ -778,7 +778,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Quick Start",
-    url: "https://runable.netlify.app/docs/getting-started/quickstart",
+    url: "https://runablejs.com/docs/getting-started/quickstart",
     section: "Observe automatic routing",
     excerpt:
       "Your directory now contains two routes: ```text app/pages/ ├── index.vue → / └── projects.vue → /projects ``` Add a file to `app/pages/` to create a route. There is no route table to maintain.",
@@ -788,7 +788,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Quick Start",
-    url: "https://runable.netlify.app/docs/getting-started/quickstart",
+    url: "https://runablejs.com/docs/getting-started/quickstart",
     section: "What you just used",
     excerpt:
       "| Need | Runable solution | | --- | --- | | Display several screens | Routing based on `app/pages/` | | Share navigation | `default.vue` layout | | Keep application routes | `/api/projects` route in Express | | Preload d…",
@@ -798,7 +798,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runable vs Nuxt",
-    url: "https://runable.netlify.app/docs/getting-started/vs-nuxt",
+    url: "https://runablejs.com/docs/getting-started/vs-nuxt",
     section:
       "Compare Runable and Nuxt by server runtime, backend integration, Vue conventions, and ecosystem maturity.",
     excerpt:
@@ -809,7 +809,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runable vs Nuxt",
-    url: "https://runable.netlify.app/docs/getting-started/vs-nuxt",
+    url: "https://runablejs.com/docs/getting-started/vs-nuxt",
     section: "The difference in one sentence",
     excerpt:
       "Nuxt provides a complete application around Nitro. Runable adds a Vue application to a backend that you choose and operate yourself. ```text Nuxt Runable ┌──────────────────────┐ ┌────────────────────────────┐ │ Vue appl…",
@@ -819,7 +819,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runable vs Nuxt",
-    url: "https://runable.netlify.app/docs/getting-started/vs-nuxt",
+    url: "https://runablejs.com/docs/getting-started/vs-nuxt",
     section: "Quick comparison",
     excerpt:
       "| Topic | Nuxt | Runable | | --- | --- | --- | | Server runtime | Nitro | Your HTTP server | | File-based pages | Yes | Yes | | Layouts | Yes | Yes | | Auto-imports | Yes | Yes | | Route middleware | Yes | Yes | | SSR an…",
@@ -829,7 +829,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runable vs Nuxt",
-    url: "https://runable.netlify.app/docs/getting-started/vs-nuxt",
+    url: "https://runablejs.com/docs/getting-started/vs-nuxt",
     section: "Choose Nuxt",
     excerpt:
       'Choose Nuxt when you want an integrated solution and Nitro fits your architecture. Nuxt is generally a better fit when: <div class="py-3 space-y-2"> <div class="flex flex-wrap items-center gap-2"><u-icon name="tabler:cir…',
@@ -839,7 +839,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runable vs Nuxt",
-    url: "https://runable.netlify.app/docs/getting-started/vs-nuxt",
+    url: "https://runablejs.com/docs/getting-started/vs-nuxt",
     section: "Choose Runable",
     excerpt:
       'Choose Runable when the backend is a foundational decision that must not be replaced. Runable is generally a better fit when: <div class="py-3 space-y-2"> <div class="flex flex-wrap items-center gap-2"><u-icon name="tabl…',
@@ -849,7 +849,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runable vs Nuxt",
-    url: "https://runable.netlify.app/docs/getting-started/vs-nuxt",
+    url: "https://runablejs.com/docs/getting-started/vs-nuxt",
     section: "What changes in server code",
     excerpt:
       'With Runable, you own the HTTP entry point: ```ts // server.ts import Express from "express"; import { express } from "runable/adapters/express"; const server = Express(); server.get("/api/users", usersController); serve…',
@@ -859,7 +859,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runable vs Nuxt",
-    url: "https://runable.netlify.app/docs/getting-started/vs-nuxt",
+    url: "https://runablejs.com/docs/getting-started/vs-nuxt",
     section: "What remains familiar",
     excerpt:
       "A Nuxt developer will recognize several conventions: | Nuxt | Runable | | --- | --- | | `pages/` | `app/pages/` | | `layouts/` | `app/layouts/` | | `components/` | `app/components/` | | `composables/` | `app/composables/…",
@@ -869,7 +869,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runable vs Nuxt",
-    url: "https://runable.netlify.app/docs/getting-started/vs-nuxt",
+    url: "https://runablejs.com/docs/getting-started/vs-nuxt",
     section: "Decide quickly",
     excerpt:
       "| Question | If the answer is yes | | --- | --- | | Does Nitro meet your server needs? | Evaluate Nuxt first | | Must an existing backend remain in control of the server? | Evaluate Runable | | Do you only need a lightwe…",
@@ -879,7 +879,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Why Runable?",
-    url: "https://runable.netlify.app/docs/getting-started/why-runable",
+    url: "https://runablejs.com/docs/getting-started/why-runable",
     section:
       "Get a Nuxt-like experience in Vue while keeping the backend and HTTP server of your choice.",
     excerpt:
@@ -890,7 +890,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Why Runable?",
-    url: "https://runable.netlify.app/docs/getting-started/why-runable",
+    url: "https://runablejs.com/docs/getting-started/why-runable",
     section: "The problem",
     excerpt:
       'Vue and Vite provide a simple, flexible foundation. As an application grows, you still have to select, integrate, and maintain several pieces: <div class="py-3 space-y-2"> <div class="flex flex-wrap items-center gap-2"><…',
@@ -900,7 +900,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Why Runable?",
-    url: "https://runable.netlify.app/docs/getting-started/why-runable",
+    url: "https://runablejs.com/docs/getting-started/why-runable",
     section: "What Runable changes",
     excerpt:
       "Runable places a Vue application layer inside your existing server. Your backend continues to handle HTTP, API routes, authentication, and application logic. Runable renders the interface. ```text HTTP request │ ▼ Your b…",
@@ -910,7 +910,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Why Runable?",
-    url: "https://runable.netlify.app/docs/getting-started/why-runable",
+    url: "https://runablejs.com/docs/getting-started/why-runable",
     section: "What Runable provides",
     excerpt:
       "| Feature | Convention or API | | --- | --- | | File-system routing | `app/pages/` | | Layouts | `app/layouts/` | | Auto-imported components and composables | `app/components/` and `app/composables/` | | Navigation middl…",
@@ -920,7 +920,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Why Runable?",
-    url: "https://runable.netlify.app/docs/getting-started/why-runable",
+    url: "https://runablejs.com/docs/getting-started/why-runable",
     section: "When should you choose Runable?",
     excerpt:
       'Runable is a good fit when: <div class="py-3 space-y-2"> <div class="flex flex-wrap items-center gap-2"><u-icon name="tabler:circle-check-filled" class="size-5 text-success"></u-icon><span>you already have a <strong>prod…',
@@ -930,7 +930,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Why Runable?",
-    url: "https://runable.netlify.app/docs/getting-started/why-runable",
+    url: "https://runablejs.com/docs/getting-started/why-runable",
     section: "Key takeaway",
     excerpt:
       "Runable does not replace your backend. It adds a structured Vue application that can render on the server or client, with ready-to-use conventions. ::u-tip --- variant: info title: Next step --- Install the required depe…",
@@ -940,7 +940,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Auto-imports",
-    url: "https://runable.netlify.app/docs/guide/auto-imports",
+    url: "https://runablejs.com/docs/guide/auto-imports",
     section:
       "Automatically use application components, composables, and global functions.",
     excerpt:
@@ -951,7 +951,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Auto-imports",
-    url: "https://runable.netlify.app/docs/guide/auto-imports",
+    url: "https://runablejs.com/docs/guide/auto-imports",
     section: "Auto-imported components",
     excerpt:
       "Files in `app/components/` are available in templates: ```text app/components/base/Button.vue → <BaseButton /> app/components/UserCard.vue → <UserCard /> ``` The path contributes to the default name. A component can decl…",
@@ -961,7 +961,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Auto-imports",
-    url: "https://runable.netlify.app/docs/guide/auto-imports",
+    url: "https://runablejs.com/docs/guide/auto-imports",
     section: "Auto-imported composables",
     excerpt:
       'Every export from `app/composables/` can be used in Vue scripts: ```ts // app/composables/useCurrency.ts export function useCurrency() { return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", }); } `…',
@@ -971,7 +971,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Auto-imports",
-    url: "https://runable.netlify.app/docs/guide/auto-imports",
+    url: "https://runablejs.com/docs/guide/auto-imports",
     section: "Auto-imported globals",
     excerpt:
       'Place functions that do not depend on the Vue lifecycle in `app/globals/`: ```ts // app/globals/formatDate.ts export function formatDate(value: string) { return new Intl.DateTimeFormat("en-US").format(new Date(value)); }…',
@@ -981,7 +981,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Auto-imports",
-    url: "https://runable.netlify.app/docs/guide/auto-imports",
+    url: "https://runablejs.com/docs/guide/auto-imports",
     section: "Add other sources",
     excerpt:
       '```ts export default defineConfig({ components: ["app/components", { dirs: "app/components/ui", prefix: "Ui" }], composables: ["app/composables", "shared/composables"], globals: ["app/globals", "shared/utils"], }); ``` R…',
@@ -991,7 +991,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "runable build",
-    url: "https://runable.netlify.app/docs/guide/cli/build",
+    url: "https://runablejs.com/docs/guide/cli/build",
     section:
       "Produce the production client and server bundles Runable serves from .output/.",
     excerpt:
@@ -1002,7 +1002,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "runable create",
-    url: "https://runable.netlify.app/docs/guide/cli/create",
+    url: "https://runablejs.com/docs/guide/cli/create",
     section:
       "Scaffold a new Runable project, add Runable to an existing backend, or create a Runable module.",
     excerpt:
@@ -1013,7 +1013,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "runable create",
-    url: "https://runable.netlify.app/docs/guide/cli/create",
+    url: "https://runablejs.com/docs/guide/cli/create",
     section: "What to create",
     excerpt:
       "The first prompt offers three modes: - **Add to an existing project** — wires Runable into a backend project you already have. - **Start with a starter** — scaffolds a new project from a full starter template. - **Create…",
@@ -1023,7 +1023,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "runable create",
-    url: "https://runable.netlify.app/docs/guide/cli/create",
+    url: "https://runablejs.com/docs/guide/cli/create",
     section: "Add to an existing project",
     excerpt:
       'Prompts, in order: 1. **Backend framework** — Express, Fastify, NestJS, AdonisJS, Hono, Koa, or "Other" (you configure the adapter yourself). 2. **Directories** — `appDir` (default `app`), `outputDir` (default `.app`), `…',
@@ -1033,7 +1033,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "runable create",
-    url: "https://runable.netlify.app/docs/guide/cli/create",
+    url: "https://runablejs.com/docs/guide/cli/create",
     section: "Create a Runable module",
     excerpt:
       "Prompts for a module name and a `configKey` (the key consumers use to configure the module in their own `runable.config.ts`), then the same directory/package-manager/install prompts as above. This mode creates a **new**…",
@@ -1043,7 +1043,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "CLI",
-    url: "https://runable.netlify.app/docs/guide/cli/index",
+    url: "https://runablejs.com/docs/guide/cli/index",
     section:
       "The runable command line — scaffold a project, regenerate framework internals, build for production, and install Agent Skills.",
     excerpt:
@@ -1054,7 +1054,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "CLI",
-    url: "https://runable.netlify.app/docs/guide/cli/index",
+    url: "https://runablejs.com/docs/guide/cli/index",
     section: "Commands",
     excerpt:
       '| Command | Purpose | | --- | --- | | <a href="/docs/guide/cli/create.md">`runable create`</a> | Scaffold a new Runable project, or add Runable to an existing backend | | <a href="/docs/guide/cli/prepare.md">`runable pre…',
@@ -1064,7 +1064,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "CLI",
-    url: "https://runable.netlify.app/docs/guide/cli/index",
+    url: "https://runablejs.com/docs/guide/cli/index",
     section: "What the CLI does not do",
     excerpt:
       "There is no `runable dev` command. Runable does not provide its own HTTP runtime — your backend (Express, Fastify, NestJS, AdonisJS, Hono, Koa, Bun, Deno, or a custom server) owns the development server, so the way you s…",
@@ -1074,7 +1074,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "runable prepare",
-    url: "https://runable.netlify.app/docs/guide/cli/prepare",
+    url: "https://runablejs.com/docs/guide/cli/prepare",
     section:
       "Regenerate .app/ — the types, routes, and auto-import registries Runable derives from your project.",
     excerpt:
@@ -1085,7 +1085,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "runable prepare",
-    url: "https://runable.netlify.app/docs/guide/cli/prepare",
+    url: "https://runablejs.com/docs/guide/cli/prepare",
     section: "When to run it",
     excerpt:
       "- After cloning a project, or right after `runable create`, before the editor or a typecheck needs `.app/` to exist. - After adding, removing, or renaming a page, layout, component, composable, global, middleware, or plu…",
@@ -1095,7 +1095,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AI Skills",
-    url: "https://runable.netlify.app/docs/guide/cli/skills",
+    url: "https://runablejs.com/docs/guide/cli/skills",
     section:
       "Install Runable's Agent Skills — procedural instructions that teach compatible AI coding agents how to work with a Runable project.",
     excerpt:
@@ -1106,7 +1106,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AI Skills",
-    url: "https://runable.netlify.app/docs/guide/cli/skills",
+    url: "https://runablejs.com/docs/guide/cli/skills",
     section: "Bundled Skills",
     excerpt:
       "| Skill | Covers | | --- | --- | | `runable-project` | Understanding and safely modifying an existing Runable project | | `runable-pages` | Pages, routes, layouts, and navigation middleware | | `runable-data-fetching` |…",
@@ -1116,7 +1116,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AI Skills",
-    url: "https://runable.netlify.app/docs/guide/cli/skills",
+    url: "https://runablejs.com/docs/guide/cli/skills",
     section: "Install",
     excerpt:
       "```bash runable skills install ``` Without arguments, this is interactive: it detects which AI coding agents are already in use in the project (from markers like `.claude/`, `.cursor/`, or `.github/copilot-instructions.m…",
@@ -1126,7 +1126,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AI Skills",
-    url: "https://runable.netlify.app/docs/guide/cli/skills",
+    url: "https://runablejs.com/docs/guide/cli/skills",
     section: "Supported agents and destinations",
     excerpt:
       "| Agent | Installation directory | | --- | --- | | OpenAI Codex | `.agents/skills/` | | Cursor | `.agents/skills/` | | GitHub Copilot | `.agents/skills/` | | Gemini CLI | `.agents/skills/` | | OpenCode | `.agents/skills/…",
@@ -1136,7 +1136,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AI Skills",
-    url: "https://runable.netlify.app/docs/guide/cli/skills",
+    url: "https://runablejs.com/docs/guide/cli/skills",
     section: "Non-interactive use",
     excerpt:
       "```bash runable skills install --target agents runable skills install --target claude runable skills install --target agents,claude runable skills install --target all ``` `--target` accepts a comma-separated list of des…",
@@ -1146,7 +1146,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AI Skills",
-    url: "https://runable.netlify.app/docs/guide/cli/skills",
+    url: "https://runablejs.com/docs/guide/cli/skills",
     section: "Existing Skills",
     excerpt:
       "| Situation | Result | | --- | --- | | Not installed yet | Installed | | Installed, identical to the bundled version | Left as-is, reported as up to date | | Installed, but different from the bundled version | Interactiv…",
@@ -1156,7 +1156,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AI Skills",
-    url: "https://runable.netlify.app/docs/guide/cli/skills",
+    url: "https://runablejs.com/docs/guide/cli/skills",
     section: "Works offline, matches your installed version",
     excerpt:
       "Skills are distributed with the `@runablejs/cli` package itself, not downloaded from GitHub or the Runable website at install time. `runable skills install` works without network access, installs deterministically, and a…",
@@ -1166,7 +1166,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AI Skills",
-    url: "https://runable.netlify.app/docs/guide/cli/skills",
+    url: "https://runablejs.com/docs/guide/cli/skills",
     section: "List",
     excerpt:
       "```bash runable skills list runable skills list --json ``` Prints every Skill bundled with the installed CLI version, with its name and description read directly from each Skill's own frontmatter. `--json` prints the sam…",
@@ -1176,7 +1176,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "CSS and assets",
-    url: "https://runable.netlify.app/docs/guide/css-and-assets",
+    url: "https://runablejs.com/docs/guide/css-and-assets",
     section: "Load global styles and serve the application's static files.",
     excerpt:
       "Runable distinguishes files transformed by Vite from files served as-is.",
@@ -1186,7 +1186,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "CSS and assets",
-    url: "https://runable.netlify.app/docs/guide/css-and-assets",
+    url: "https://runablejs.com/docs/guide/css-and-assets",
     section: "Load global styles",
     excerpt:
       'Declare them in `runable.config.ts`: ```ts export default defineConfig({ css: [ "app/css/reset.css", "app/css/main.css", ], }); ``` Runable combines project and module styles, removes duplicates, and imports them into th…',
@@ -1196,7 +1196,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "CSS and assets",
-    url: "https://runable.netlify.app/docs/guide/css-and-assets",
+    url: "https://runablejs.com/docs/guide/css-and-assets",
     section: "Keep styles local",
     excerpt:
       "Component-specific styles remain in the Vue file: ```vue <style scoped> .card { border: 1px solid #ddd; } </style> ``` Add only globally loaded stylesheets to `css`.",
@@ -1206,7 +1206,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "CSS and assets",
-    url: "https://runable.netlify.app/docs/guide/css-and-assets",
+    url: "https://runablejs.com/docs/guide/css-and-assets",
     section: "Serve a public file",
     excerpt:
       'Put untransformed files in `public/`: ```text public/ ├── favicon.svg └── images/logo.png ``` Reference them from the root: ```vue <img src="/images/logo.png" alt="Acme" /> ``` To import an asset and let Vite version it,…',
@@ -1216,7 +1216,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "CSS and assets",
-    url: "https://runable.netlify.app/docs/guide/css-and-assets",
+    url: "https://runablejs.com/docs/guide/css-and-assets",
     section: "Change the public directory",
     excerpt:
       '```ts export default defineConfig({ publicDir: "static", }); ``` Use `publicDir: false` to disable it. ::u-tip --- variant: info title: Public file or import? --- Use `public/` to keep a stable name such as `robots.txt`.…',
@@ -1226,7 +1226,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Data Fetching",
-    url: "https://runable.netlify.app/docs/guide/data-fetching",
+    url: "https://runablejs.com/docs/guide/data-fetching",
     section:
       "Load data with caching, deduplication, cancellation, and SSR hydration.",
     excerpt:
@@ -1237,7 +1237,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Data Fetching",
-    url: "https://runable.netlify.app/docs/guide/data-fetching",
+    url: "https://runablejs.com/docs/guide/data-fetching",
     section: "Load a resource",
     excerpt:
       '```vue <script setup lang="ts"> type Project = { id: number; name: string }; const { data: projects, pending, error, refresh } = await useAsyncData( "projects", async (signal) => { return $fetch<Project[]>("/api/projects…',
@@ -1247,7 +1247,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Data Fetching",
-    url: "https://runable.netlify.app/docs/guide/data-fetching",
+    url: "https://runablejs.com/docs/guide/data-fetching",
     section: "Choose a stable key",
     excerpt:
       "The key identifies the cache entry and deduplicates simultaneous requests. Include parameters that change the result: ```ts const route = useRoute(); const id = computed(() => String(route.params.id)); const project = aw…",
@@ -1257,7 +1257,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Data Fetching",
-    url: "https://runable.netlify.app/docs/guide/data-fetching",
+    url: "https://runablejs.com/docs/guide/data-fetching",
     section: "Adjust execution",
     excerpt:
       '```ts const result = await useAsyncData("stats", loadStats, { server: true, lazy: false, immediate: true, ttl: 60_000, default: () => [], transform: (items) => items.slice(0, 10), }); ``` | Option | Use it to | | --- | -…',
@@ -1267,7 +1267,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Error handling",
-    url: "https://runable.netlify.app/docs/guide/error-handling",
+    url: "https://runablejs.com/docs/guide/error-handling",
     section:
       "Capture Vue, Router, and browser errors in a consistent interface.",
     excerpt:
@@ -1278,7 +1278,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Error handling",
-    url: "https://runable.netlify.app/docs/guide/error-handling",
+    url: "https://runablejs.com/docs/guide/error-handling",
     section: "Display an error manually",
     excerpt:
       '```vue <script setup lang="ts"> const { showError } = useAppError(); async function save() { try { await saveProject(); } catch (error) { showError(error, { code: "PROJECT_SAVE_FAILED", statusCode: 500, info: "Unable to…',
@@ -1288,7 +1288,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Error handling",
-    url: "https://runable.netlify.app/docs/guide/error-handling",
+    url: "https://runablejs.com/docs/guide/error-handling",
     section: "Customize the screen",
     excerpt:
       'Create `app/error.vue`: ```vue <script setup lang="ts"> defineProps<{ error: { code: string; message: string } }>(); defineEmits<{ clear: [] }>(); </script> <template> <main> <p>{{ error.code }}</p> <h1>{{ error.message…',
@@ -1298,7 +1298,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Error handling",
-    url: "https://runable.netlify.app/docs/guide/error-handling",
+    url: "https://runablejs.com/docs/guide/error-handling",
     section: "Read and clear state",
     excerpt:
       "```ts const { error, showError, clearError } = useAppError(); console.log(error.value?.source); clearError(); ``` An error includes `code`, `statusCode`, `message`, `stack`, `source`, `info`, `url`, and `timestamp`.",
@@ -1308,7 +1308,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Error handling",
-    url: "https://runable.netlify.app/docs/guide/error-handling",
+    url: "https://runablejs.com/docs/guide/error-handling",
     section: "Errors during SSR",
     excerpt:
       "If server rendering fails, Runable records the error and renders `app/error.vue` in a second pass. The exception therefore does not automatically produce an empty HTML page. ::u-tip --- variant: info title: API errors re…",
@@ -1318,7 +1318,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Head and SEO",
-    url: "https://runable.netlify.app/docs/guide/head-and-seo",
+    url: "https://runablejs.com/docs/guide/head-and-seo",
     section: "Define global and page-specific HTML metadata with Unhead.",
     excerpt:
       "Runable installs Unhead and its Schema.org integration. Metadata produced during SSR is injected into the document before it is sent.",
@@ -1328,7 +1328,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Head and SEO",
-    url: "https://runable.netlify.app/docs/guide/head-and-seo",
+    url: "https://runablejs.com/docs/guide/head-and-seo",
     section: "Define global values",
     excerpt:
       '```ts // runable.config.ts export default defineConfig({ siteUrl: "https://example.com", head: { titleTemplate: "%s · Acme", meta: [{ name: "description", content: "Manage your projects with Acme." }], link: [{ rel: "ico…',
@@ -1338,7 +1338,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Head and SEO",
-    url: "https://runable.netlify.app/docs/guide/head-and-seo",
+    url: "https://runablejs.com/docs/guide/head-and-seo",
     section: "Configure a page",
     excerpt:
       '```vue <script setup lang="ts"> const project = ref({ name: "Runable", summary: "A Vue application with your backend." }); useSeoMeta({ title: () => project.value.name, description: () => project.value.summary, ogTitle:…',
@@ -1348,7 +1348,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Head and SEO",
-    url: "https://runable.netlify.app/docs/guide/head-and-seo",
+    url: "https://runablejs.com/docs/guide/head-and-seo",
     section: "Add arbitrary elements",
     excerpt:
       '```ts useHead({ htmlAttrs: { lang: "en" }, link: [{ rel: "canonical", href: "https://example.com/projects" }], }); ``` Use `useHeadSafe()` when values come from an untrusted source. `injectHead()` gives advanced integrat…',
@@ -1358,7 +1358,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Head and SEO",
-    url: "https://runable.netlify.app/docs/guide/head-and-seo",
+    url: "https://runablejs.com/docs/guide/head-and-seo",
     section: "Declare structured data",
     excerpt:
       '```ts import { defineWebPage } from "@unhead/schema-org"; useSchemaOrg([ defineWebPage({ name: "Projects", description: "List of public projects", }), ]); ``` `useSchemaOrg()` is auto-imported. Explicitly import the Sche…',
@@ -1368,7 +1368,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Guide",
-    url: "https://runable.netlify.app/docs/guide/index",
+    url: "https://runablejs.com/docs/guide/index",
     section: "Build, render, extend, and ship a Runable application.",
     excerpt:
       "This guide explains how to use Runable in a real application. Each page starts from a concrete need and shows the code to write.",
@@ -1378,7 +1378,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Guide",
-    url: "https://runable.netlify.app/docs/guide/index",
+    url: "https://runablejs.com/docs/guide/index",
     section: "Build the interface",
     excerpt:
       'Start here to organize page navigation and display. | Need | Page | | --- | --- | | Turn Vue files into routes | <a href="/docs/guide/routing.md">Routing</a> | | Share a structure across pages | <a href="/docs/guide/layo…',
@@ -1388,7 +1388,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Guide",
-    url: "https://runable.netlify.app/docs/guide/index",
+    url: "https://runablejs.com/docs/guide/index",
     section: "Load and render",
     excerpt:
       'These pages cover data, SSR, and HTML metadata. | Need | Page | | --- | --- | | Load data with caching and hydration | <a href="/docs/guide/data-fetching.md">Data Fetching</a> | | Choose between SSR and CSR | <a href="/d…',
@@ -1398,7 +1398,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Guide",
-    url: "https://runable.netlify.app/docs/guide/index",
+    url: "https://runablejs.com/docs/guide/index",
     section: "Extend Runable",
     excerpt:
       'Use auto-imports for application code, plugins to initialize Vue, and modules to distribute a complete set of conventions. | Scope | Solution | | --- | --- | | A reusable function or component | <a href="/docs/guide/auto…',
@@ -1408,7 +1408,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Guide",
-    url: "https://runable.netlify.app/docs/guide/index",
+    url: "https://runablejs.com/docs/guide/index",
     section: "Configure and ship",
     excerpt:
       'Finish with <a href="/docs/guide/runtime-config.md">runtime configuration</a>, <a href="/docs/guide/css-and-assets.md">styles and assets</a>, then the <a href="/docs/guide/production-build.md">production build</a>. ::u-t…',
@@ -1418,7 +1418,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Inspector",
-    url: "https://runable.netlify.app/docs/guide/inspector",
+    url: "https://runablejs.com/docs/guide/inspector",
     section:
       "Programmatically inspect how Runable resolves a project — routes, layouts, middleware, plugins, modules, and auto-imports.",
     excerpt:
@@ -1429,7 +1429,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Inspector",
-    url: "https://runable.netlify.app/docs/guide/inspector",
+    url: "https://runablejs.com/docs/guide/inspector",
     section: "Create an inspector",
     excerpt:
       '```ts import { createRunableInspector } from "runable/inspector"; const inspector = await createRunableInspector({ rootDir: process.cwd(), // optional, this is the default }); ``` `rootDir` must directly contain a `runab…',
@@ -1439,7 +1439,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Inspector",
-    url: "https://runable.netlify.app/docs/guide/inspector",
+    url: "https://runablejs.com/docs/guide/inspector",
     section: "Read the project",
     excerpt:
       "Every method is async and returns a plain, `JSON.stringify()`-safe value — no Vue instances, no Vite/Rollup objects, no functions. ```ts const project = await inspector.getProject(); // { rootDir, runableVersion, ssr, pa…",
@@ -1449,7 +1449,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Inspector",
-    url: "https://runable.netlify.app/docs/guide/inspector",
+    url: "https://runablejs.com/docs/guide/inspector",
     section: "Resolving a route",
     excerpt:
       'Given a path, `resolveRoute()` answers "which route matches this, and with what params?" — using Vue Router\'s own matcher against the routes `getRoutes()` would return, so dynamic (`:id`), optional (`:slug?`), catch-all…',
@@ -1459,7 +1459,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Inspector",
-    url: "https://runable.netlify.app/docs/guide/inspector",
+    url: "https://runablejs.com/docs/guide/inspector",
     section: "Configuration and runtime privacy",
     excerpt:
       "`getConfig()` returns a stable, public subset of the resolved configuration — not Runable's full internal config object, which carries Vite plugins, functions, and other values that don't belong on a public boundary. Run…",
@@ -1469,7 +1469,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Inspector",
-    url: "https://runable.netlify.app/docs/guide/inspector",
+    url: "https://runablejs.com/docs/guide/inspector",
     section: "Refreshing",
     excerpt:
       "An Inspector snapshots the project when it's created and caches each result the first time it's requested. If the project changes while it stays open (a page added, the config edited, a module changed), call `refresh()`…",
@@ -1479,7 +1479,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Inspector",
-    url: "https://runable.netlify.app/docs/guide/inspector",
+    url: "https://runablejs.com/docs/guide/inspector",
     section: 'What "read-only" actually guarantees',
     excerpt:
       '"Read-only" describes what the Inspector **itself** does, not a sandbox around the project it inspects: - The Inspector itself does not generate or modify a Runable project/build file — not even `.app/`, which `runable p…',
@@ -1489,7 +1489,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Layouts",
-    url: "https://runable.netlify.app/docs/guide/layouts",
+    url: "https://runablejs.com/docs/guide/layouts",
     section:
       "Share an interface structure across pages without duplicating templates.",
     excerpt:
@@ -1500,7 +1500,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Layouts",
-    url: "https://runable.netlify.app/docs/guide/layouts",
+    url: "https://runablejs.com/docs/guide/layouts",
     section: "Create the default layout",
     excerpt:
       '```vue <!-- app/layouts/default.vue --> <template> <div class="shell"> <header>My application</header> <main><slot /></main> </div> </template> ``` Every page uses `default` unless it declares another layout.',
@@ -1510,7 +1510,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Layouts",
-    url: "https://runable.netlify.app/docs/guide/layouts",
+    url: "https://runablejs.com/docs/guide/layouts",
     section: "Select a layout",
     excerpt:
       '```vue <!-- app/pages/admin/index.vue --> <script setup lang="ts"> definePageMeta({ layout: "admin" }); </script> <template> <h1>Administration</h1> </template> ``` Runable then looks for `app/layouts/admin.vue`.',
@@ -1520,7 +1520,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Layouts",
-    url: "https://runable.netlify.app/docs/guide/layouts",
+    url: "https://runablejs.com/docs/guide/layouts",
     section: "Pass properties",
     excerpt:
       'Declare an object to pass props to the layout: ```vue <script setup lang="ts"> definePageMeta({ layout: { name: "dashboard", props: { compact: true }, }, }); </script> ``` ```vue <!-- app/layouts/dashboard.vue --> <scrip…',
@@ -1530,7 +1530,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Layouts",
-    url: "https://runable.netlify.app/docs/guide/layouts",
+    url: "https://runablejs.com/docs/guide/layouts",
     section: "Disable the layout",
     excerpt:
       "```ts definePageMeta({ layout: false }); ``` The page content is then rendered directly. ::u-tip --- variant: warning title: Layout not found --- If the name matches no loaded layout, Runable displays the page without a…",
@@ -1540,7 +1540,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Middleware",
-    url: "https://runable.netlify.app/docs/guide/middlewares",
+    url: "https://runablejs.com/docs/guide/middlewares",
     section: "Allow, block, or redirect navigation before displaying a page.",
     excerpt:
       "Files in `app/middlewares/` are Vue Router guards. They run in the browser and during SSR navigation.",
@@ -1550,7 +1550,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Middleware",
-    url: "https://runable.netlify.app/docs/guide/middlewares",
+    url: "https://runablejs.com/docs/guide/middlewares",
     section: "Create named middleware",
     excerpt:
       '```ts // app/middlewares/auth.ts export default defineVueMiddleware((to) => { const authenticated = false; if (!authenticated) { return { path: "/login", query: { redirect: to.fullPath } }; } }); ``` Attach it to a page…',
@@ -1560,7 +1560,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Middleware",
-    url: "https://runable.netlify.app/docs/guide/middlewares",
+    url: "https://runablejs.com/docs/guide/middlewares",
     section: "Create global middleware",
     excerpt:
       'Add the `.global` suffix to run it on every navigation: ```ts // app/middlewares/analytics.global.ts export default defineVueMiddleware((to, from) => { console.debug("navigation", from.fullPath, to.fullPath); }); ```',
@@ -1570,7 +1570,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Middleware",
-    url: "https://runable.netlify.app/docs/guide/middlewares",
+    url: "https://runablejs.com/docs/guide/middlewares",
     section: "Control navigation",
     excerpt:
       "Middleware can return: | Return value | Result | | --- | --- | | `undefined` or `true` | Continue navigation | | `false` | Cancel navigation | | A route | Redirect to that route | | A thrown error | Trigger router error…",
@@ -1580,7 +1580,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Modules",
-    url: "https://runable.netlify.app/docs/guide/modules",
+    url: "https://runablejs.com/docs/guide/modules",
     section: "Group and distribute a configurable Runable feature.",
     excerpt:
       "A module is reusable Runable configuration. It can add components, composables, layouts, plugins, middleware, styles, and even other modules.",
@@ -1590,7 +1590,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Modules",
-    url: "https://runable.netlify.app/docs/guide/modules",
+    url: "https://runablejs.com/docs/guide/modules",
     section: "Create a local module",
     excerpt:
       '```text modules/analytics/ ├── runable.config.ts └── runtime/ └── plugin.ts ``` ```ts // modules/analytics/runable.config.ts import { defineModule } from "runable"; export default defineModule<{ endpoint: string }>({ met…',
@@ -1600,7 +1600,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Modules",
-    url: "https://runable.netlify.app/docs/guide/modules",
+    url: "https://runablejs.com/docs/guide/modules",
     section: "Add collections without setup",
     excerpt:
       'A module can extend Runable configuration directly: ```ts export default defineModule({ meta: { name: "design-system" }, components: ["./components"], css: ["./styles/index.css"], }); ``` Paths are resolved from the modu…',
@@ -1610,7 +1610,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Modules",
-    url: "https://runable.netlify.app/docs/guide/modules",
+    url: "https://runablejs.com/docs/guide/modules",
     section: "Order several modules",
     excerpt:
       '```ts export default defineModule({ meta: { name: "analytics-ui" }, dependOn: ["analytics"], enforce: "post", async setup() {}, }); ``` Groups run in `pre`, normal, then `post` order. `dependOn` imposes order within a gr…',
@@ -1620,7 +1620,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Modules",
-    url: "https://runable.netlify.app/docs/guide/modules",
+    url: "https://runablejs.com/docs/guide/modules",
     section: "Publish a module",
     excerpt:
       "Build the module before publishing it. For an installed package, Runable resolves its `runable.config` from the package's `dist` directory. Then add its name to the consuming project's `modules` array. ::u-tip --- varian…",
@@ -1630,7 +1630,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Plugins",
-    url: "https://runable.netlify.app/docs/guide/plugins",
+    url: "https://runablejs.com/docs/guide/plugins",
     section:
       "Initialize libraries, provide dependencies, and order Vue application startup.",
     excerpt:
@@ -1641,7 +1641,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Plugins",
-    url: "https://runable.netlify.app/docs/guide/plugins",
+    url: "https://runablejs.com/docs/guide/plugins",
     section: "Create a plugin",
     excerpt:
       '```ts // app/plugins/api.ts export default defineVuePlugin((vueApp) => { vueApp.directive("focus", { mounted(element) { element.focus(); }, }); return { provide: { apiBase: "/api", }, }; }); ``` Values in `provide` are r…',
@@ -1651,7 +1651,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Plugins",
-    url: "https://runable.netlify.app/docs/guide/plugins",
+    url: "https://runablejs.com/docs/guide/plugins",
     section: "Declare order",
     excerpt:
       '```ts // app/plugins/tracking.ts export default defineVuePlugin({ name: "tracking", enforce: "post", dependsOn: ["api"], setup() { // Initialization }, }); ``` | Option | Purpose | | --- | --- | | `name` | Identifies the…',
@@ -1661,7 +1661,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Plugins",
-    url: "https://runable.netlify.app/docs/guide/plugins",
+    url: "https://runablejs.com/docs/guide/plugins",
     section: "Keep SSR isolated",
     excerpt:
       "During SSR, Runable creates one Vue application per render. Create mutable state inside `setup()`: ```ts export default defineVuePlugin(() => { const state = reactive({ user: null }); return { provide: { session: state }…",
@@ -1671,7 +1671,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Production build",
-    url: "https://runable.netlify.app/docs/guide/production-build",
+    url: "https://runablejs.com/docs/guide/production-build",
     section:
       "Generate client and server bundles, then run Runable without a Vite server.",
     excerpt:
@@ -1682,7 +1682,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Production build",
-    url: "https://runable.netlify.app/docs/guide/production-build",
+    url: "https://runablejs.com/docs/guide/production-build",
     section: "Create the build script",
     excerpt:
       '```ts // scripts/build.ts import { buildProduction, loadConfig } from "runable"; await loadConfig(); await buildProduction(); ``` Add project commands: ```json { "scripts": { "build": "tsx scripts/build.ts", "start": "NO…',
@@ -1692,7 +1692,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Production build",
-    url: "https://runable.netlify.app/docs/guide/production-build",
+    url: "https://runablejs.com/docs/guide/production-build",
     section: "Understand the output",
     excerpt:
       "With the default `distdir`, Runable writes to `.output/`: ```text .output/ ├── client/ │ ├── index.html │ └── assets/ ├── server/ # present when ssr: true └── manifest.js ``` `manifest.js` connects the Runable server to…",
@@ -1702,7 +1702,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Production build",
-    url: "https://runable.netlify.app/docs/guide/production-build",
+    url: "https://runablejs.com/docs/guide/production-build",
     section: "Start the existing server",
     excerpt:
       'Your `server.ts` does not change: ```ts import Express from "express"; import { express } from "runable/adapters/express"; const server = Express(); server.get("/api/health", (_req, res) => { res.json({ status: "ok" });…',
@@ -1712,7 +1712,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Production build",
-    url: "https://runable.netlify.app/docs/guide/production-build",
+    url: "https://runablejs.com/docs/guide/production-build",
     section: "Prepare deployment",
     excerpt:
       "Copy into the production environment: - `.output/`; - the server and its runtime dependencies; - `runable.config.ts` or its compiled version; - required environment variables. Always test the startup command with `NODE_E…",
@@ -1722,7 +1722,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "SSR and CSR",
-    url: "https://runable.netlify.app/docs/guide/rendering-modes",
+    url: "https://runablejs.com/docs/guide/rendering-modes",
     section:
       "Choose the application's rendering mode and isolate browser-only code.",
     excerpt:
@@ -1733,7 +1733,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "SSR and CSR",
-    url: "https://runable.netlify.app/docs/guide/rendering-modes",
+    url: "https://runablejs.com/docs/guide/rendering-modes",
     section: "Choose the mode",
     excerpt:
       '```ts // runable.config.ts import { defineConfig } from "runable"; export default defineConfig({ ssr: true, }); ``` With `ssr: false`, Runable serves the client template and Vue builds the interface in the browser. | Mod…',
@@ -1743,7 +1743,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "SSR and CSR",
-    url: "https://runable.netlify.app/docs/guide/rendering-modes",
+    url: "https://runablejs.com/docs/guide/rendering-modes",
     section: "Write SSR-compatible code",
     excerpt:
       '`window`, `document`, `localStorage`, and `navigator` do not exist on the server. Access them after mounting: ```vue <script setup lang="ts"> const width = ref<number>(); onMounted(() => { width.value = window.innerWidth…',
@@ -1753,7 +1753,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "SSR and CSR",
-    url: "https://runable.netlify.app/docs/guide/rendering-modes",
+    url: "https://runablejs.com/docs/guide/rendering-modes",
     section: "Isolate a client component",
     excerpt:
       '```vue <ClientOnly fallback="Loading the map…" fallback-tag="p"> <InteractiveMap /> </ClientOnly> ``` You can also provide a slot: ```vue <ClientOnly> <Chart /> <template #fallback> <ChartSkeleton /> </template> </Client…',
@@ -1763,7 +1763,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "SSR and CSR",
-    url: "https://runable.netlify.app/docs/guide/rendering-modes",
+    url: "https://runablejs.com/docs/guide/rendering-modes",
     section: "Understand hydration",
     excerpt:
       "During SSR, Vue takes over existing HTML instead of recreating it. The first client render must therefore produce the same structure as the server. Use `ClientOnly` when a library cannot meet this constraint. ::u-tip ---…",
@@ -1773,7 +1773,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Routing",
-    url: "https://runable.netlify.app/docs/guide/routing",
+    url: "https://runablejs.com/docs/guide/routing",
     section: "Create application routes from files in app/pages.",
     excerpt:
       "Runable turns components in `app/pages/` into Vue Router routes. Add, move, or delete a file and the route table follows automatically.",
@@ -1783,7 +1783,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Routing",
-    url: "https://runable.netlify.app/docs/guide/routing",
+    url: "https://runablejs.com/docs/guide/routing",
     section: "Create routes",
     excerpt:
       "```text app/pages/ ├── index.vue → / ├── about.vue → /about ├── projects/ │ ├── index.vue → /projects │ └── [id].vue → /projects/:id ├── blog/[[page]].vue → /blog/:page? └── docs/[...path].vue → /docs/:path* ``` Read par…",
@@ -1793,7 +1793,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Routing",
-    url: "https://runable.netlify.app/docs/guide/routing",
+    url: "https://runablejs.com/docs/guide/routing",
     section: "Define page metadata",
     excerpt:
       '`definePageMeta()` is auto-imported into pages. ```vue <script setup lang="ts"> definePageMeta({ name: "project-details", layout: "dashboard", middleware: ["auth"], }); </script> ``` Use these fields to control the route…',
@@ -1803,7 +1803,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Routing",
-    url: "https://runable.netlify.app/docs/guide/routing",
+    url: "https://runablejs.com/docs/guide/routing",
     section: "Navigate",
     excerpt:
       'Use `RunableLink` in templates or `navigateTo()` in scripts: ```vue <template> <RunableLink to="/projects">View projects</RunableLink> </template> ``` ```ts await navigateTo({ name: "project-details", params: { id: "42"…',
@@ -1813,7 +1813,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Routing",
-    url: "https://runable.netlify.app/docs/guide/routing",
+    url: "https://runablejs.com/docs/guide/routing",
     section: "Display nested pages",
     excerpt:
       "Place `RunablePage` in a parent page to display its child route: ```vue <!-- app/pages/projects.vue --> <template> <section> <h1>Projects</h1> <RunablePage /> </section> </template> ``` ::u-tip --- variant: info title: H…",
@@ -1823,7 +1823,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runtime configuration",
-    url: "https://runable.netlify.app/docs/guide/runtime-config",
+    url: "https://runablejs.com/docs/guide/runtime-config",
     section: "Load typed variables without exposing secrets to the browser.",
     excerpt:
       "Runable reads `.env` files for the active Vite mode and variables from `process.env`. It keeps names prefixed with `RUN_`, or `VITE_`.",
@@ -1833,7 +1833,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runtime configuration",
-    url: "https://runable.netlify.app/docs/guide/runtime-config",
+    url: "https://runablejs.com/docs/guide/runtime-config",
     section: "Declare values",
     excerpt:
       "```dotenv RUN_PUBLIC_API_BASE=/api RUN_PUBLIC_FEATURE_ENABLED=true RUN_DATABASE_URL=postgres://localhost/acme RUN_RETRY_COUNT=3 ``` The `PUBLIC_` segment determines visibility: | Variable | Generated access | Client | Se…",
@@ -1843,7 +1843,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runtime configuration",
-    url: "https://runable.netlify.app/docs/guide/runtime-config",
+    url: "https://runablejs.com/docs/guide/runtime-config",
     section: "Read values",
     excerpt:
       "```ts const runtime = useRuntime(); const apiBase = runtime.public.apiBase; if (import.meta.server) { console.log(runtime.databaseUrl); } ``` Runable removes the prefix, converts names to `camelCase`, and infers booleans…",
@@ -1853,7 +1853,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runtime configuration",
-    url: "https://runable.netlify.app/docs/guide/runtime-config",
+    url: "https://runablejs.com/docs/guide/runtime-config",
     section: "Use import.meta.env",
     excerpt:
       "Static accesses are also replaced during compilation: ```ts const apiBase = import.meta.env.RUN_PUBLIC_API_BASE; ``` Dynamic notation such as `import.meta.env[key]` is not transformed. Prefer `useRuntime()` for the `publ…",
@@ -1863,7 +1863,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Runtime configuration",
-    url: "https://runable.netlify.app/docs/guide/runtime-config",
+    url: "https://runablejs.com/docs/guide/runtime-config",
     section: "Provide editor types",
     excerpt:
       "Runable writes `.app/runtime.d.ts` at startup. Restart the server after adding or renaming a variable to regenerate the declaration. ::u-tip --- variant: destructive title: A public variable is never secret --- Every `*_…",
@@ -1873,7 +1873,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AdonisJS",
-    url: "https://runable.netlify.app/docs/integrations/adonisjs",
+    url: "https://runablejs.com/docs/integrations/adonisjs",
     section: "Installation",
     excerpt: "```bash pnpm add runable vue vue-router @adonisjs/core ```",
     content: "```bash\npnpm add runable vue vue-router @adonisjs/core\n```",
@@ -1881,7 +1881,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "AdonisJS",
-    url: "https://runable.netlify.app/docs/integrations/adonisjs",
+    url: "https://runablejs.com/docs/integrations/adonisjs",
     section: "Configuration",
     excerpt:
       '```ts // start/routes.ts import router from "@adonisjs/core/services/router"; import { adonis } from "runable/adapters/adonis"; router.get("/api/health", async () => ({ status: "ok" })); router.any("*", adonis()); ``` `a…',
@@ -1891,7 +1891,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Bun",
-    url: "https://runable.netlify.app/docs/integrations/bun",
+    url: "https://runablejs.com/docs/integrations/bun",
     section: "Installation",
     excerpt: "```bash bun add runable vue vue-router ```",
     content: "```bash\nbun add runable vue vue-router\n```",
@@ -1899,7 +1899,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Bun",
-    url: "https://runable.netlify.app/docs/integrations/bun",
+    url: "https://runablejs.com/docs/integrations/bun",
     section: "Configuration",
     excerpt:
       '```ts // server.ts import { bun } from "runable/adapters/bun"; Bun.serve({ port: 3000, fetch: bun(), }); ``` `bun()` returns a `(request: Request) => Response | Promise<Response>` function. It uses Fetch API objects dire…',
@@ -1909,7 +1909,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Custom adapter",
-    url: "https://runable.netlify.app/docs/integrations/custom",
+    url: "https://runablejs.com/docs/integrations/custom",
     section:
       "Connect Runable to a Node or Fetch API server without a dedicated adapter.",
     excerpt:
@@ -1920,7 +1920,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Custom adapter",
-    url: "https://runable.netlify.app/docs/integrations/custom",
+    url: "https://runablejs.com/docs/integrations/custom",
     section: "Node server",
     excerpt:
       '```ts import { createServer } from "node:http"; import { createRunableApp, requestNode } from "runable"; const runableApp = createRunableApp(); createServer(async (req, res) => { await requestNode({ runableApp: await run…',
@@ -1930,7 +1930,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Custom adapter",
-    url: "https://runable.netlify.app/docs/integrations/custom",
+    url: "https://runablejs.com/docs/integrations/custom",
     section: "Fetch API runtime",
     excerpt:
       '```ts import { createRunableApp, requestWeb } from "runable"; const runableApp = createRunableApp(); export async function fetch(request: Request) { return requestWeb({ runableApp: await runableApp, req: request, }); } `…',
@@ -1940,7 +1940,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Deno",
-    url: "https://runable.netlify.app/docs/integrations/deno",
+    url: "https://runablejs.com/docs/integrations/deno",
     section: "Configuration",
     excerpt:
       '```ts // server.ts import { deno } from "runable/adapters/deno"; Deno.serve({ port: 3000 }, deno()); ``` `deno()` has the same Fetch API signature as the Bun adapter. ```ts const renderRunable = deno(); Deno.serve({ port…',
@@ -1950,7 +1950,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Express",
-    url: "https://runable.netlify.app/docs/integrations/express",
+    url: "https://runablejs.com/docs/integrations/express",
     section: "Installation",
     excerpt:
       "```bash pnpm add runable vue vue-router express pnpm add -D @types/express ```",
@@ -1960,7 +1960,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Express",
-    url: "https://runable.netlify.app/docs/integrations/express",
+    url: "https://runablejs.com/docs/integrations/express",
     section: "Configuration",
     excerpt:
       '```ts // server.ts import Express from "express"; import { express } from "runable/adapters/express"; const app = Express(); app.get("/api/health", (_req, res) => { res.json({ status: "ok" }); }); app.use(express()); app…',
@@ -1970,7 +1970,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Express",
-    url: "https://runable.netlify.app/docs/integrations/express",
+    url: "https://runablejs.com/docs/integrations/express",
     section: "Reuse an instance",
     excerpt:
       '```ts import { createRunableApp } from "runable"; import { express } from "runable/adapters/express"; const runableApp = createRunableApp(); app.use(express({ runableApp })); ```',
@@ -1980,7 +1980,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Fastify",
-    url: "https://runable.netlify.app/docs/integrations/fastify",
+    url: "https://runablejs.com/docs/integrations/fastify",
     section: "Installation",
     excerpt: "```bash pnpm add runable vue vue-router fastify ```",
     content: "```bash\npnpm add runable vue vue-router fastify\n```",
@@ -1988,7 +1988,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Fastify",
-    url: "https://runable.netlify.app/docs/integrations/fastify",
+    url: "https://runablejs.com/docs/integrations/fastify",
     section: "Configuration",
     excerpt:
       '```ts // server.ts import Fastify from "fastify"; import { fastify } from "runable/adapters/fastify"; const app = Fastify(); app.get("/api/health", async () => ({ status: "ok" })); await app.register(fastify()); await ap…',
@@ -1998,7 +1998,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "h3",
-    url: "https://runable.netlify.app/docs/integrations/h3",
+    url: "https://runablejs.com/docs/integrations/h3",
     section:
       "Connect h3 to Runable manually with the Node or Fetch API primitives.",
     excerpt:
@@ -2009,7 +2009,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Hono",
-    url: "https://runable.netlify.app/docs/integrations/hono",
+    url: "https://runablejs.com/docs/integrations/hono",
     section: "Installation",
     excerpt:
       "```bash pnpm add runable vue vue-router hono ``` Add `@hono/node-server` when running Hono on Node.js.",
@@ -2019,7 +2019,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Hono",
-    url: "https://runable.netlify.app/docs/integrations/hono",
+    url: "https://runablejs.com/docs/integrations/hono",
     section: "Configuration",
     excerpt:
       '```ts // server.ts import { Hono } from "hono"; import { serve } from "@hono/node-server"; import { hono } from "runable/adapters/hono"; const app = new Hono(); app.use("*", hono()); app.get("/api/health", (context) => {…',
@@ -2029,7 +2029,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Integrations",
-    url: "https://runable.netlify.app/docs/integrations/index",
+    url: "https://runablejs.com/docs/integrations/index",
     section:
       "Connect Runable to Express, Fastify, Hono, Koa, NestJS, AdonisJS, Bun, Deno, or a custom server.",
     excerpt:
@@ -2040,7 +2040,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Integrations",
-    url: "https://runable.netlify.app/docs/integrations/index",
+    url: "https://runablejs.com/docs/integrations/index",
     section: "Available adapters",
     excerpt:
       "| Backend | Runable API | Form | | --- | --- | --- | | Express | `express()` | Middleware | | Fastify | `fastify()` | Plugin | | Hono | `hono()` | Middleware | | Koa | `koa()` | Middleware | | NestJS | `nestjs()` | Expre…",
@@ -2050,7 +2050,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Integrations",
-    url: "https://runable.netlify.app/docs/integrations/index",
+    url: "https://runablejs.com/docs/integrations/index",
     section: "Shared option",
     excerpt:
       "Every adapter accepts an already initialized instance: ```ts type RunableAdapterOptions = { runableApp?: Promise<ViteDevServer | null> | ViteDevServer | null; }; ``` Without this option, the adapter calls `createRunableA…",
@@ -2060,7 +2060,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Koa",
-    url: "https://runable.netlify.app/docs/integrations/koa",
+    url: "https://runablejs.com/docs/integrations/koa",
     section: "Installation",
     excerpt:
       "```bash pnpm add runable vue vue-router koa pnpm add -D @types/koa ```",
@@ -2070,7 +2070,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Koa",
-    url: "https://runable.netlify.app/docs/integrations/koa",
+    url: "https://runablejs.com/docs/integrations/koa",
     section: "Configuration",
     excerpt:
       '```ts // server.ts import Koa from "koa"; import { koa } from "runable/adapters/koa"; const app = new Koa(); app.use(async (context, next) => { if (context.path === "/api/health") { context.body = { status: "ok" }; retur…',
@@ -2080,7 +2080,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "NestJS",
-    url: "https://runable.netlify.app/docs/integrations/nestjs",
+    url: "https://runablejs.com/docs/integrations/nestjs",
     section:
       "Connect Runable after the controllers of a NestJS application using Express.",
     excerpt: "The current adapter targets the NestJS Express platform.",
@@ -2089,7 +2089,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "NestJS",
-    url: "https://runable.netlify.app/docs/integrations/nestjs",
+    url: "https://runablejs.com/docs/integrations/nestjs",
     section: "Installation",
     excerpt:
       "```bash pnpm add runable vue vue-router @nestjs/common @nestjs/core @nestjs/platform-express ```",
@@ -2099,7 +2099,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "NestJS",
-    url: "https://runable.netlify.app/docs/integrations/nestjs",
+    url: "https://runablejs.com/docs/integrations/nestjs",
     section: "Configuration",
     excerpt:
       '```ts // main.ts import { NestFactory } from "@nestjs/core"; import { nestjs } from "runable/adapters/nestjs"; import { AppModule } from "./app.module.js"; const app = await NestFactory.create(AppModule); // Register Nes…',
@@ -2109,7 +2109,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/components",
-    url: "https://runable.netlify.app/docs/structure/app-components",
+    url: "https://runablejs.com/docs/structure/app-components",
     section: "Create Vue components that are available without manual imports.",
     excerpt:
       "Runable detects Vue components in this directory and makes them available in templates. ```vue <!-- app/components/AppLogo.vue --> <template> <strong>Acme</strong> </template> ``` ```vue <!-- app/pages/index.vue --> <tem…",
@@ -2119,7 +2119,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/components",
-    url: "https://runable.netlify.app/docs/structure/app-components",
+    url: "https://runablejs.com/docs/structure/app-components",
     section: "Define the name inside the component",
     excerpt:
       'A name declared in the file replaces the name inferred from its path: ```vue <!-- app/components/button.vue --> <script setup lang="ts"> defineOptions({ name: "PrimaryAction", }); </script> <template> <button type="butto…',
@@ -2129,7 +2129,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/components",
-    url: "https://runable.netlify.app/docs/structure/app-components",
+    url: "https://runablejs.com/docs/structure/app-components",
     section: "Components provided by Runable",
     excerpt:
       "Runable registers several internal components alongside project components: | Component | Purpose | | --- | --- | | `RunablePage` | Displays the current Vue Router route | | `RunableLink` | Creates a navigation link with…",
@@ -2139,7 +2139,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/composables",
-    url: "https://runable.netlify.app/docs/structure/app-composables",
+    url: "https://runablejs.com/docs/structure/app-composables",
     section: "Share auto-imported Vue logic across components and pages.",
     excerpt:
       "Place functions that compose Vue state and APIs here. Named exports are auto-imported into the application. ```ts // app/composables/useCounter.ts export function useCounter() { const count = ref(0); return { count, incr…",
@@ -2149,7 +2149,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/css",
-    url: "https://runable.netlify.app/docs/structure/app-css",
+    url: "https://runablejs.com/docs/structure/app-css",
     section: "Organize global stylesheets loaded by Runable.",
     excerpt:
       "`app/css/` is an organizational convention, but its files are not loaded automatically. Declare each global entry in `runable.config.ts`. ```css /* app/css/main.css */ :root { font-family: system-ui, sans-serif; } ``` ``…",
@@ -2159,7 +2159,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app.vue",
-    url: "https://runable.netlify.app/docs/structure/app-dot-vue",
+    url: "https://runablejs.com/docs/structure/app-dot-vue",
     section: "Customize the root component of the Vue application.",
     excerpt:
       "`app.vue` is the root component shared by every page. Use it for structures that must live above layouts, such as a theme provider, notifications, or accessibility elements. ```vue <!-- app/app.vue --> <template> <Runabl…",
@@ -2169,7 +2169,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/globals",
-    url: "https://runable.netlify.app/docs/structure/app-globals",
+    url: "https://runablejs.com/docs/structure/app-globals",
     section:
       "Make functions and variables automatically available in application code.",
     excerpt:
@@ -2180,7 +2180,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/layouts",
-    url: "https://runable.netlify.app/docs/structure/app-layouts",
+    url: "https://runablejs.com/docs/structure/app-layouts",
     section: "Share an interface structure across several pages.",
     excerpt:
       "A layout wraps page content. `default.vue` is used when a page does not explicitly select another layout. ```vue <!-- app/layouts/default.vue --> <template> <div> <header>My application</header> <main><slot /></main> </d…",
@@ -2190,7 +2190,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/middlewares",
-    url: "https://runable.netlify.app/docs/structure/app-middlewares",
+    url: "https://runablejs.com/docs/structure/app-middlewares",
     section: "Control Vue navigation with global or named middleware.",
     excerpt:
       "Middleware runs during Vue Router navigation. Use it to check a session, redirect, or block access to a page. ```ts // app/middlewares/auth.ts export default defineVueMiddleware((to) => { const user = useCurrentUser(); i…",
@@ -2200,7 +2200,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/pages",
-    url: "https://runable.netlify.app/docs/structure/app-pages",
+    url: "https://runablejs.com/docs/structure/app-pages",
     section: "Create Vue routes from the file tree.",
     excerpt:
       "Every Vue component in `app/pages/` becomes a route. Its file path determines the URL. ```text app/pages/ ├── index.vue → / ├── about.vue → /about ├── users/[id].vue → /users/:id └── docs/[...slug].vue → /docs/:slug* ```…",
@@ -2210,7 +2210,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app/plugins",
-    url: "https://runable.netlify.app/docs/structure/app-plugins",
+    url: "https://runablejs.com/docs/structure/app-plugins",
     section: "Run code when each Vue application is created.",
     excerpt:
       "A plugin configures the Vue application before rendering. Use `defineVuePlugin()` to install a library, provide a value, or register hooks. ```ts // app/plugins/api.ts export default defineVuePlugin(() => { return { prov…",
@@ -2220,7 +2220,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app",
-    url: "https://runable.netlify.app/docs/structure/app",
+    url: "https://runablejs.com/docs/structure/app",
     section: "Organize your Vue application sources in the app directory.",
     excerpt:
       "The `app/` directory contains the Vue application. Runable scans its conventional subdirectories and generates the required registries. ```text app/ ├── pages/ ├── layouts/ ├── components/ ├── composables/ ├── globals/ ├…",
@@ -2230,7 +2230,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "app",
-    url: "https://runable.netlify.app/docs/structure/app",
+    url: "https://runablejs.com/docs/structure/app",
     section: "Use another name",
     excerpt:
       '```ts // runable.config.ts export default defineConfig({ appDir: "frontend", }); ``` Conventions then become `frontend/pages`, `frontend/layouts`, and so on. A more specific option such as `pages` or `components` can ove…',
@@ -2240,7 +2240,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".app",
-    url: "https://runable.netlify.app/docs/structure/dot-app",
+    url: "https://runablejs.com/docs/structure/dot-app",
     section:
       "Understand the types, registries, and virtual files prepared by Runable.",
     excerpt:
@@ -2251,7 +2251,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".app",
-    url: "https://runable.netlify.app/docs/structure/dot-app",
+    url: "https://runablejs.com/docs/structure/dot-app",
     section: "Prepare types",
     excerpt:
       '```bash pnpm app:prepare ``` Run this command after installing the project and in CI before type checking when `.app/` does not exist yet. See <a href="/docs/guide/cli/prepare.md">`runable prepare`</a> for the command it…',
@@ -2261,7 +2261,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".env",
-    url: "https://runable.netlify.app/docs/structure/env",
+    url: "https://runablejs.com/docs/structure/env",
     section:
       "Load typed environment variables and control which values Runable exposes to the browser.",
     excerpt:
@@ -2272,7 +2272,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".env",
-    url: "https://runable.netlify.app/docs/structure/env",
+    url: "https://runablejs.com/docs/structure/env",
     section: "Declare variables",
     excerpt:
       "Runable recognizes two prefixes: `RUN_` and `VITE_`. Prefer `RUN_` in new projects to distinguish Runable configuration clearly. ```dotenv",
@@ -2282,7 +2282,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".env",
-    url: "https://runable.netlify.app/docs/structure/env",
+    url: "https://runablejs.com/docs/structure/env",
     section: "Available in the browser and during SSR",
     excerpt: "RUN_PUBLIC_API_BASE=/api RUN_PUBLIC_FEATURE_ENABLED=true",
     content: "RUN_PUBLIC_API_BASE=/api\nRUN_PUBLIC_FEATURE_ENABLED=true",
@@ -2290,7 +2290,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".env",
-    url: "https://runable.netlify.app/docs/structure/env",
+    url: "https://runablejs.com/docs/structure/env",
     section: "Available only on the server",
     excerpt:
       "RUN_DATABASE_URL=postgres://localhost/acme RUN_RETRY_COUNT=3 ``` The `PUBLIC_` segment controls client exposure: | Name in `.env` | Generated property | Client | Server | | --- | --- | --- | --- | | `RUN_PUBLIC_API_BASE`…",
@@ -2300,7 +2300,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".env",
-    url: "https://runable.netlify.app/docs/structure/env",
+    url: "https://runablejs.com/docs/structure/env",
     section: "Read configuration",
     excerpt:
       '`useRuntime()` is auto-imported into the Vue application: ```vue <script setup lang="ts"> const runtime = useRuntime(); const apiBase = runtime.public.apiBase; </script> <template> <a :href="`${apiBase}/projects`">View p…',
@@ -2310,7 +2310,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".env",
-    url: "https://runable.netlify.app/docs/structure/env",
+    url: "https://runablejs.com/docs/structure/env",
     section: "Generated types",
     excerpt:
       "At startup, Runable analyzes values and writes declarations to `.app/runtime.d.ts`. Your editor therefore knows the available properties without a manual TypeScript interface. ```dotenv RUN_PUBLIC_ENABLED=true RUN_PORT=3…",
@@ -2320,7 +2320,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".env",
-    url: "https://runable.netlify.app/docs/structure/env",
+    url: "https://runablejs.com/docs/structure/env",
     section: "Direct access with import.meta.env",
     excerpt:
       "Runable also replaces static accesses using the `RUN_` and `VITE_` prefixes: ```ts const apiBase = import.meta.env.RUN_PUBLIC_API_BASE; ``` Use dot notation and the full variable name. Dynamic access such as `import.meta…",
@@ -2330,7 +2330,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".env",
-    url: "https://runable.netlify.app/docs/structure/env",
+    url: "https://runablejs.com/docs/structure/env",
     section: "Files to commit",
     excerpt:
       "Keep local values in `.env` or standard Vite mode variants such as `.env.development` and `.env.production`. Commit a secret-free `.env.example` that describes the expected configuration. ```dotenv",
@@ -2340,7 +2340,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".env",
-    url: "https://runable.netlify.app/docs/structure/env",
+    url: "https://runablejs.com/docs/structure/env",
     section: ".env.example",
     excerpt: "RUN_PUBLIC_API_BASE= RUN_DATABASE_URL= ```",
     content: "RUN_PUBLIC_API_BASE=\nRUN_DATABASE_URL=\n```",
@@ -2348,7 +2348,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "error.vue",
-    url: "https://runable.netlify.app/docs/structure/error-dot-vue",
+    url: "https://runablejs.com/docs/structure/error-dot-vue",
     section:
       "Display a consistent interface when an error reaches the Vue application.",
     excerpt:
@@ -2359,7 +2359,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".gitignore",
-    url: "https://runable.netlify.app/docs/structure/gitignore",
+    url: "https://runablejs.com/docs/structure/gitignore",
     section: "Ignore dependencies, builds, generated files, and local secrets.",
     excerpt:
       "A Runable project should at least ignore its dependencies, generated output, and local variables. ```gitignore node_modules/ .app/ .output/ .env .env.* !.env.example *.log .DS_Store ``` Adjust `.output/` and `.app/` if y…",
@@ -2369,7 +2369,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Project structure",
-    url: "https://runable.netlify.app/docs/structure/index",
+    url: "https://runablejs.com/docs/structure/index",
     section:
       "Quickly locate application code, configuration, generated files, and the production build in a Runable project.",
     excerpt:
@@ -2380,7 +2380,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Project structure",
-    url: "https://runable.netlify.app/docs/structure/index",
+    url: "https://runablejs.com/docs/structure/index",
     section: "Where should code go?",
     excerpt:
       "| Need | Location | | --- | --- | | Create a screen | `app/pages/` | | Share a visual structure | `app/layouts/` | | Reuse an interface | `app/components/` | | Reuse Vue logic | `app/composables/` | | Expose an auto-impo…",
@@ -2390,7 +2390,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "Project structure",
-    url: "https://runable.netlify.app/docs/structure/index",
+    url: "https://runablejs.com/docs/structure/index",
     section: "Optional directories",
     excerpt:
       "Conventional directories are scanned even when they do not exist yet. Create only those your application needs. You can also relocate each convention from `runable.config.ts`.",
@@ -2400,7 +2400,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "modules",
-    url: "https://runable.netlify.app/docs/structure/modules",
+    url: "https://runablejs.com/docs/structure/modules",
     section:
       "Develop local Runable modules before extracting them into a package.",
     excerpt:
@@ -2411,7 +2411,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "node_modules",
-    url: "https://runable.netlify.app/docs/structure/node-modules",
+    url: "https://runablejs.com/docs/structure/node-modules",
     section: "Manage dependencies installed by the package manager.",
     excerpt:
       "The package manager creates `node_modules/` from `package.json` and the lockfile. Runable, Vue, Vite, and the selected backend are installed there. Never edit a file in this directory. Add or update the relevant dependen…",
@@ -2421,7 +2421,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".output",
-    url: "https://runable.netlify.app/docs/structure/output",
+    url: "https://runablejs.com/docs/structure/output",
     section: "Understand the production build generated by Runable.",
     excerpt:
       "`runable build` writes the production build to `.output/` by default. ```text .output/ ├── client/ │ ├── assets/ # Hashed JavaScript, CSS, and assets │ └── index.html ├── server/ # SSR bundle when SSR is enabled └── mani…",
@@ -2431,7 +2431,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".output",
-    url: "https://runable.netlify.app/docs/structure/output",
+    url: "https://runablejs.com/docs/structure/output",
     section: "Change the location",
     excerpt:
       '```ts // runable.config.ts export default defineConfig({ distdir: "dist", }); ``` Add the selected directory to `.gitignore`. Your deployment pipeline should rebuild it rather than commit it. ::u-tip --- variant: info ti…',
@@ -2441,7 +2441,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "package.json",
-    url: "https://runable.netlify.app/docs/structure/package-json",
+    url: "https://runablejs.com/docs/structure/package-json",
     section:
       "Declare scripts, dependencies, and runtime constraints for a Runable project.",
     excerpt:
@@ -2452,7 +2452,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "public",
-    url: "https://runable.netlify.app/docs/structure/public",
+    url: "https://runablejs.com/docs/structure/public",
     section: "Serve static files without importing them into Vue code.",
     excerpt:
       "Put files that must keep their name and be served directly from the site root in `public/`. ```text public/ ├── favicon.svg → /favicon.svg └── robots.txt → /robots.txt ``` Reference them with an absolute URL from the roo…",
@@ -2462,7 +2462,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "runable.config.ts",
-    url: "https://runable.netlify.app/docs/structure/runable-config",
+    url: "https://runablejs.com/docs/structure/runable-config",
     section:
       "Configure conventions, SSR, modules, and Vite from the project's central file.",
     excerpt:
@@ -2473,7 +2473,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "server.ts",
-    url: "https://runable.netlify.app/docs/structure/server",
+    url: "https://runablejs.com/docs/structure/server",
     section:
       "Start your backend and mount the Runable adapter as the last middleware.",
     excerpt:
@@ -2484,7 +2484,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".app/tsconfig.app.json",
-    url: "https://runable.netlify.app/docs/structure/tsconfig-app",
+    url: "https://runablejs.com/docs/structure/tsconfig-app",
     section:
       "Use the TypeScript configuration generated by Runable and extend it only when the project needs to.",
     excerpt:
@@ -2495,7 +2495,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".app/tsconfig.app.json",
-    url: "https://runable.netlify.app/docs/structure/tsconfig-app",
+    url: "https://runablejs.com/docs/structure/tsconfig-app",
     section: "Recommended minimal configuration",
     excerpt:
       'When the generated settings suit your project, reference the file directly from `tsconfig.json`: ```json { "files": [], "references": [ { "path": "./.app/tsconfig.app.json" }, { "path": "./tsconfig.node.json" } ] } ``` I…',
@@ -2505,7 +2505,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: ".app/tsconfig.app.json",
-    url: "https://runable.netlify.app/docs/structure/tsconfig-app",
+    url: "https://runablejs.com/docs/structure/tsconfig-app",
     section: "Add project options",
     excerpt:
       'Create a root file only when the application needs additional options: ```json { "extends": "./.app/tsconfig.app.json", "compilerOptions": { "exactOptionalPropertyTypes": true } } ``` Then update the root reference: ```j…',
@@ -2515,7 +2515,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "tsconfig.node.json",
-    url: "https://runable.netlify.app/docs/structure/tsconfig-node",
+    url: "https://runablejs.com/docs/structure/tsconfig-node",
     section:
       "Type the server, Runable configuration, and scripts executed by Node.js.",
     excerpt:
@@ -2526,7 +2526,7 @@ export const DOCS_INDEX: DocsIndexEntry[] = [
   },
   {
     title: "tsconfig.json",
-    url: "https://runable.netlify.app/docs/structure/tsconfig",
+    url: "https://runablejs.com/docs/structure/tsconfig",
     section: "Connect the frontend and server TypeScript configurations.",
     excerpt:
       'The root configuration coordinates frontend and server environments without mixing their types. ```json { "files": [], "references": [ { "path": "./.app/tsconfig.app.json" }, { "path": "./tsconfig.node.json" } ] } ``` `.…',
