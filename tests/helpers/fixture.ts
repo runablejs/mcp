@@ -37,6 +37,15 @@ export interface FixtureRunableOptions {
   modules?: Record<string, unknown>[];
   /** The object the fake `getAutoImports()` resolves to. */
   autoImports?: Record<string, unknown>;
+  /** Maps an input path to the fake `resolveRoute(path)` result (before
+   * `refresh()`). A path not present in this map resolves to `null`. */
+  resolveRouteResults?: Record<string, Record<string, unknown> | null>;
+  /** Same as `resolveRouteResults`, but active once `refresh()` has been
+   * called — defaults to `resolveRouteResults` if omitted. */
+  resolveRouteResultsAfterRefresh?: Record<
+    string,
+    Record<string, unknown> | null
+  >;
   /** If set, the fake `createRunableInspector()` rejects with this message. */
   rejectWith?: string;
   /** Method names to omit entirely from the resolved Inspector instance — e.g. `["getRoutes"]` to simulate an incompatible/older Inspector missing that one method. */
@@ -103,8 +112,8 @@ async function writeFixtureRunablePackage(
     ? `throw new Error(${JSON.stringify(options.rejectWith)});`
     : "";
   const omit = new Set(options.omitMethods ?? []);
-  const method = (name: string, body: string): string =>
-    omit.has(name) ? "" : `async ${name}() { ${body} },`;
+  const method = (name: string, body: string, params = ""): string =>
+    omit.has(name) ? "" : `async ${name}(${params}) { ${body} },`;
 
   const project = JSON.stringify(options.project ?? {});
   const config = JSON.stringify(options.config ?? {});
@@ -118,6 +127,14 @@ async function writeFixtureRunablePackage(
   const modules = JSON.stringify(options.modules ?? []);
   const autoImports = JSON.stringify(
     options.autoImports ?? { components: [], composables: [], globals: [] },
+  );
+  const resolveRouteResultsBeforeRefresh = JSON.stringify(
+    options.resolveRouteResults ?? {},
+  );
+  const resolveRouteResultsAfterRefresh = JSON.stringify(
+    options.resolveRouteResultsAfterRefresh ??
+      options.resolveRouteResults ??
+      {},
   );
   const delayMs = options.logDelayMs ?? 0;
   const delay =
@@ -142,6 +159,8 @@ async function writeFixtureRunablePackage(
   const plugins = ${plugins};
   const modules = ${modules};
   const autoImports = ${autoImports};
+  const resolveRouteResultsBeforeRefresh = ${resolveRouteResultsBeforeRefresh};
+  const resolveRouteResultsAfterRefresh = ${resolveRouteResultsAfterRefresh};
   let refreshed = false;
 
   return {
@@ -153,6 +172,11 @@ async function writeFixtureRunablePackage(
     ${method("getPlugins", "return plugins;")}
     ${method("getModules", "return modules;")}
     ${method("getAutoImports", "return autoImports;")}
+    ${method(
+      "resolveRoute",
+      "const table = refreshed ? resolveRouteResultsAfterRefresh : resolveRouteResultsBeforeRefresh; return table[path] ?? null;",
+      "path",
+    )}
     ${method("refresh", `${logOnRefresh} refreshed = true;`)}
   };
 }

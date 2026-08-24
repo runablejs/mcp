@@ -83,4 +83,28 @@ describe("get_config over real stdio, against the real published runable", () =>
       await client.close();
     }
   });
+
+  it("keeps stdout clean for diagnose too, which also calls getConfig() internally", async () => {
+    // diagnose() builds its DiagnosticContext via inspector.getConfig(),
+    // a separate call site from the get_config tool above — this proves
+    // that path is wrapped in withProjectOutputRedirect as well, not just
+    // the dedicated get_config tool.
+    const transport = new SniffingStdioClientTransport(process.execPath, [
+      builtBinPath,
+      "--cwd",
+      fixture.rootDir,
+    ]);
+    const client = new Client({ name: "test-client", version: "0.0.0" });
+
+    try {
+      await client.connect(transport);
+
+      const result = await client.callTool({ name: "diagnose", arguments: {} });
+
+      expect(result.isError).toBeFalsy();
+      expect(transport.nonProtocolLines).toEqual([]);
+    } finally {
+      await client.close();
+    }
+  });
 });

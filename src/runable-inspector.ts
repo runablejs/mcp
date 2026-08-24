@@ -100,6 +100,13 @@ export interface RunableAutoImportsInfo {
   globals: RunableImportInfo[];
 }
 
+export interface RunableRouteMatchInfo {
+  route: RunableRouteInfo;
+  params: Record<string, string | string[]>;
+  query: Record<string, string | (string | null)[] | null>;
+  hash: string;
+}
+
 /** The subset of `RunableInspector` this package actually calls today. */
 export interface RunableInspectorLike {
   getProject(): Promise<RunableProjectInfo>;
@@ -110,6 +117,16 @@ export interface RunableInspectorLike {
   getPlugins(): Promise<RunablePluginInfo[]>;
   getModules(): Promise<RunableModuleInfo[]>;
   getAutoImports(): Promise<RunableAutoImportsInfo>;
+  /**
+   * Added to Runable's Inspector after the original 8-method contract this
+   * package was first built against — deliberately optional here (and left
+   * out of `REQUIRED_INSPECTOR_METHODS` below) so an older, still-otherwise-
+   * compatible Runable installation isn't refused entirely just because it
+   * predates this one method. `resolve_route` (see tools/resolve-route.ts)
+   * checks for it at call time and fails only that call, clearly, rather
+   * than gating every tool behind it.
+   */
+  resolveRoute?(path: string): Promise<RunableRouteMatchInfo | null>;
   refresh(): Promise<void>;
 }
 

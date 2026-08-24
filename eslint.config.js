@@ -17,4 +17,12 @@ export default tseslint.config(
       ],
     },
   },
+  {
+    // A dev-only, maintainer-run CLI script — never part of the MCP stdio
+    // server, so the stdout-safety rule above doesn't apply here.
+    files: ["scripts/**/*.ts"],
+    rules: {
+      "no-console": "off",
+    },
+  },
 );

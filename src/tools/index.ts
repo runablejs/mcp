@@ -6,6 +6,9 @@ import { registerGetConfigTool } from "./get-config.js";
 import { registerGetRoutesTool } from "./get-routes.js";
 import { registerGetExtensionsTool } from "./get-extensions.js";
 import { registerRefreshTool } from "./refresh.js";
+import { registerResolveRouteTool } from "./resolve-route.js";
+import { registerDiagnoseTool } from "./diagnose.js";
+import { registerSearchApiTool } from "./search-api.js";
 
 export function registerTools(
   server: McpServer,
@@ -16,4 +19,7 @@ export function registerTools(
   registerGetRoutesTool(server, context);
   registerGetExtensionsTool(server, context);
   registerRefreshTool(server, context);
+  registerResolveRouteTool(server, context);
+  registerDiagnoseTool(server, context);
+  registerSearchApiTool(server, context);
 }

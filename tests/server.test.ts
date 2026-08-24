@@ -42,7 +42,7 @@ describe("createRunableMcpServer", () => {
     expect(MCP_SERVER_VERSION).toMatch(/^\d+\.\d+\.\d+/);
   });
 
-  it("registers exactly the five introspection tools", async () => {
+  it("registers exactly the eight introspection tools", async () => {
     const project = await createFixtureProject({ runable: { project: {} } });
     cleanups.push(project.cleanup);
 
@@ -55,6 +55,9 @@ describe("createRunableMcpServer", () => {
       "get_routes",
       "get_extensions",
       "refresh",
+      "resolve_route",
+      "diagnose",
+      "search_api",
     ]);
   });
 

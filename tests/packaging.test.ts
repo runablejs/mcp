@@ -81,7 +81,19 @@ beforeAll(async () => {
     paths: { appDir: "app", generatedDir: ".app", outputDir: ".output" },
   };
   consumerProject = await createFixtureProject({
-    runable: { project: expectedProject, version: "1.0.0-tarball-fixture" },
+    runable: {
+      project: expectedProject,
+      version: "1.0.0-tarball-fixture",
+      routes: [{ path: "/", file: "app/pages/index.vue" }],
+      resolveRouteResults: {
+        "/": {
+          route: { path: "/", file: "app/pages/index.vue" },
+          params: {},
+          query: {},
+          hash: "",
+        },
+      },
+    },
   });
 
   // Lay out node_modules exactly the way a package manager would: the
@@ -167,6 +179,66 @@ describe("the pnpm pack tarball, installed like a real dependency", () => {
         runableVersion: "1.0.0-tarball-fixture",
         ssr: true,
       });
+      expect(transport.nonProtocolLines).toEqual([]);
+    } finally {
+      await client.close();
+    }
+  });
+
+  it("resolve_route, diagnose, and search_api all work from the tarball, with search_api's embedded docs index requiring no ../runable/ access", async () => {
+    const binPath = join(
+      consumerProject.rootDir,
+      "node_modules",
+      ".bin",
+      "runable-mcp",
+    );
+
+    const transport = new SniffingStdioClientTransport(binPath, [], {
+      cwd: consumerProject.rootDir,
+    });
+    const client = new Client({ name: "test-client", version: "0.0.0" });
+
+    try {
+      await client.connect(transport);
+
+      const resolveRouteResult = await client.callTool({
+        name: "resolve_route",
+        arguments: { path: "/" },
+      });
+      expect(resolveRouteResult.isError).toBeFalsy();
+      expect(resolveRouteResult.structuredContent).toMatchObject({
+        matched: true,
+      });
+
+      const diagnoseResult = await client.callTool({
+        name: "diagnose",
+        arguments: {},
+      });
+      expect(diagnoseResult.isError).toBeFalsy();
+      expect(diagnoseResult.structuredContent).toMatchObject({
+        valid: true,
+      });
+
+      // The tarball's own package directory (extractedPackageDir) has no
+      // ../runable/ sibling anywhere near it — the process.cwd() for this
+      // child is consumerProject.rootDir, a throwaway tmpdir. A successful,
+      // populated result here can only come from the checked-in generated
+      // docs index bundled into dist/, not from reading ../runable/ at
+      // runtime.
+      const searchResult = await client.callTool({
+        name: "search_api",
+        arguments: { query: "useAsyncData" },
+      });
+      expect(searchResult.isError).toBeFalsy();
+      const searchContent = searchResult.structuredContent as {
+        documentationVersion: string;
+        projectRunableVersion: string;
+        results: unknown[];
+      };
+      expect(searchContent.documentationVersion).toMatch(/^\d+\.\d+\.\d+/);
+      expect(searchContent.projectRunableVersion).toBe("1.0.0-tarball-fixture");
+      expect(searchContent.results.length).toBeGreaterThan(0);
+
       expect(transport.nonProtocolLines).toEqual([]);
     } finally {
       await client.close();

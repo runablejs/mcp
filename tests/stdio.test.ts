@@ -16,7 +16,7 @@ afterEach(async () => {
 });
 
 describe("the packaged CLI over real stdio", () => {
-  it("starts, accepts an MCP connection, and answers all five tools", async () => {
+  it("starts, accepts an MCP connection, and answers all eight tools", async () => {
     const expectedProject = {
       rootDir: "/workspace/my-project",
       runableVersion: "1.0.0-fixture",
@@ -32,12 +32,20 @@ describe("the packaged CLI over real stdio", () => {
     const expectedLayouts = [
       { name: "default", file: "app/layouts/default.vue" },
     ];
+    const routeMatch = {
+      route: { path: "/", file: "app/pages/index.vue" },
+      params: {},
+      query: {},
+      hash: "",
+    };
     const project = await createFixtureProject({
       runable: {
         project: expectedProject,
+        config: {},
         version: "1.0.0-fixture",
         routes: expectedRoutes,
         layouts: expectedLayouts,
+        resolveRouteResults: { "/": routeMatch },
       },
     });
     cleanups.push(project.cleanup);
@@ -59,6 +67,9 @@ describe("the packaged CLI over real stdio", () => {
         "get_routes",
         "get_extensions",
         "refresh",
+        "resolve_route",
+        "diagnose",
+        "search_api",
       ]);
 
       const projectResult = await client.callTool({
@@ -87,11 +98,47 @@ describe("the packaged CLI over real stdio", () => {
         items: expectedLayouts,
       });
 
+      const resolveRouteResult = await client.callTool({
+        name: "resolve_route",
+        arguments: { path: "/" },
+      });
+      expect(resolveRouteResult.structuredContent).toEqual({
+        matched: true,
+        match: routeMatch,
+      });
+
+      const diagnoseResult = await client.callTool({
+        name: "diagnose",
+        arguments: {},
+      });
+      expect(diagnoseResult.structuredContent).toEqual({
+        valid: true,
+        summary: { errors: 0, warnings: 0, info: 0 },
+        issues: [],
+      });
+
+      const searchResult = await client.callTool({
+        name: "search_api",
+        arguments: { query: "useAsyncData" },
+      });
+      const searchContent = searchResult.structuredContent as {
+        results: unknown[];
+      };
+      expect(searchContent.results.length).toBeGreaterThan(0);
+
       const refreshResult = await client.callTool({
         name: "refresh",
         arguments: {},
       });
       expect(refreshResult.structuredContent).toEqual({ refreshed: true });
+
+      // The session survives every tool above — confirmed by a plain
+      // get_project call still succeeding at the very end.
+      const finalProjectResult = await client.callTool({
+        name: "get_project",
+        arguments: {},
+      });
+      expect(finalProjectResult.isError).toBeFalsy();
 
       // Nothing but framed JSON-RPC ever reached stdout during the session.
       expect(transport.nonProtocolLines).toEqual([]);

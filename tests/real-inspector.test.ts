@@ -156,6 +156,36 @@ describe("against a real, published runable/inspector", () => {
     });
   });
 
+  // REAL_RUNABLE_VERSION (currently 1.0.0-alpha.4, the latest published to
+  // npm) predates resolveRoute() being added to Runable's Inspector — it
+  // exists in ../runable/'s own source but has never been published. Until
+  // a Runable version that implements it is published and this pin is
+  // bumped, resolve_route's real-Inspector behavior is necessarily the
+  // graceful-degradation path (see runable-inspector.ts's optional
+  // `resolveRoute?`) rather than a genuine match — which this test proves
+  // works correctly against a real, unmodified incompatible Inspector. Once
+  // a compatible version is published, this assertion should flip to
+  // expecting a real match instead.
+  it("resolve_route degrades gracefully against the currently published runable, which doesn't implement resolveRoute() yet", async () => {
+    const result = await client.callTool({
+      name: "resolve_route",
+      arguments: { path: "/" },
+    });
+
+    expect(result.isError).toBe(true);
+    expect(JSON.stringify(result.content)).toMatch(/resolveRoute/);
+  });
+
+  it("diagnose reports valid: true for the real fixture's well-formed project", async () => {
+    const result = await client.callTool({ name: "diagnose", arguments: {} });
+
+    expect(result.isError).toBeFalsy();
+    expect(result.structuredContent).toMatchObject({
+      valid: true,
+      summary: { errors: 0 },
+    });
+  });
+
   it("agent workflow: get_routes -> add a page -> refresh -> get_routes reflects it", async () => {
     const before = await client.callTool({ name: "get_routes", arguments: {} });
     const beforePaths = (

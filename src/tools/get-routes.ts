@@ -6,7 +6,9 @@ import type { RunableRouteInfo } from "../runable-inspector.js";
 
 // Mirrors `InspectorRoute` from `runable/inspector` — kept in sync with it
 // manually; `assertOutputParity` below is the compile-time trip wire.
-const routeSchema = z.object({
+// Exported so resolve-route.ts can reuse the exact same shape rather than
+// redeclaring it.
+export const routeSchema = z.object({
   name: z
     .string()
     .optional()
