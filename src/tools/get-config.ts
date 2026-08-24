@@ -2,8 +2,8 @@ import { z } from "zod";
 import type { McpServer } from "@modelcontextprotocol/server";
 
 import type { RunableMcpContext } from "../context.js";
+import { withProjectOutputRedirect } from "../project-output-redirect.js";
 import type { RunableConfigInfo } from "../runable-inspector.js";
-import { withStdoutGuard } from "../stdout-guard.js";
 
 // Mirrors `InspectorConfig` from `runable/inspector` — kept in sync with it
 // manually since MCP tool output schemas can't be derived from a TS type.
@@ -67,11 +67,11 @@ export function registerGetConfigTool(
       outputSchema: configOutputSchema,
     },
     async () => {
-      // See stdout-guard.ts: getConfig() loads the project's .env via
-      // Runable's own loadRuntimeEnv(), which — through dotenv, not through
-      // any Runable code — writes an informational line straight to
-      // stdout, corrupting the MCP session if left unguarded.
-      const config = await withStdoutGuard(() => context.inspector.getConfig());
+      // getConfig() loads the project's .env via Runable's own
+      // loadRuntimeEnv() — see project-output-redirect.ts.
+      const config = await withProjectOutputRedirect(() =>
+        context.inspector.getConfig(),
+      );
       const structuredContent = assertOutputParity(config);
 
       return {

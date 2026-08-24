@@ -15,10 +15,10 @@
  * actually uses, and evolves independently as more of `RunableInspector`'s
  * surface gets used.
  *
- * Every `Runable*Info` type below mirrors its `Inspector*` counterpart from
- * `../../runable/packages/runable/src/inspector/types.ts` — kept in sync by
- * hand; see each tool's `assertOutputParity` for the compile-time trip wire
- * against silent drift.
+ * Every `Runable*Info` type below mirrors the public Inspector types
+ * exposed by Runable (`InspectorProject`, `InspectorConfig`, `InspectorRoute`,
+ * ... from `runable/inspector`) — kept in sync by hand; see each tool's
+ * `assertOutputParity` for the compile-time trip wire against silent drift.
  */
 
 export interface RunableProjectInfo {

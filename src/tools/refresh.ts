@@ -2,6 +2,7 @@ import { z } from "zod";
 import type { McpServer } from "@modelcontextprotocol/server";
 
 import type { RunableMcpContext } from "../context.js";
+import { withProjectOutputRedirect } from "../project-output-redirect.js";
 
 export const refreshOutputSchema = z.object({
   refreshed: z.literal(true),
@@ -22,7 +23,10 @@ export function registerRefreshTool(
       outputSchema: refreshOutputSchema,
     },
     async () => {
-      await context.inspector.refresh();
+      // refresh() re-resolves the config graph, which re-executes
+      // runable.config.* and every module's setup() hook — see
+      // project-output-redirect.ts.
+      await withProjectOutputRedirect(() => context.inspector.refresh());
       const structuredContent = { refreshed: true as const };
 
       return {

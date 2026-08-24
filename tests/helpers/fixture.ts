@@ -41,6 +41,20 @@ export interface FixtureRunableOptions {
   rejectWith?: string;
   /** Method names to omit entirely from the resolved Inspector instance — e.g. `["getRoutes"]` to simulate an incompatible/older Inspector missing that one method. */
   omitMethods?: string[];
+  /** If set, `console.log`s this exact string synchronously while
+   * `createRunableInspector()` runs — stands in for a `runable.config.*`
+   * file's or a module's `setup()` hook's own output during config
+   * resolution. */
+  logOnCreate?: string;
+  /** Same as `logOnCreate`, but during `refresh()` instead. */
+  logOnRefresh?: string;
+  /** Same as `logOnCreate`, but during `getConfig()` instead. */
+  logOnGetConfig?: string;
+  /** Milliseconds to `await` (via a real timer, not just a microtask) right
+   * before each of the above logs — widens the race window for tests that
+   * fire two logged operations without awaiting between them, to prove
+   * their redirected output doesn't cross-contaminate. */
+  logDelayMs?: number;
 }
 
 export interface FixtureProjectOptions {
@@ -105,10 +119,19 @@ async function writeFixtureRunablePackage(
   const autoImports = JSON.stringify(
     options.autoImports ?? { components: [], composables: [], globals: [] },
   );
+  const delayMs = options.logDelayMs ?? 0;
+  const delay =
+    delayMs > 0 ? `await new Promise((r) => setTimeout(r, ${delayMs}));` : "";
+  const log = (message: string | undefined): string =>
+    message ? `${delay} console.log(${JSON.stringify(message)});` : "";
+  const logOnCreate = log(options.logOnCreate);
+  const logOnRefresh = log(options.logOnRefresh);
+  const logOnGetConfig = log(options.logOnGetConfig);
 
   await writeFile(
     join(packageDir, "inspector.js"),
     `export async function createRunableInspector(options) {
+  ${logOnCreate}
   ${rejection}
   const project = ${project};
   const config = ${config};
@@ -123,14 +146,14 @@ async function writeFixtureRunablePackage(
 
   return {
     ${method("getProject", "return project;")}
-    ${method("getConfig", "return config;")}
+    ${method("getConfig", `${logOnGetConfig} return config;`)}
     ${method("getRoutes", "return refreshed ? routesAfterRefresh : routesBeforeRefresh;")}
     ${method("getLayouts", "return layouts;")}
     ${method("getMiddlewares", "return middlewares;")}
     ${method("getPlugins", "return plugins;")}
     ${method("getModules", "return modules;")}
     ${method("getAutoImports", "return autoImports;")}
-    ${method("refresh", "refreshed = true;")}
+    ${method("refresh", `${logOnRefresh} refreshed = true;`)}
   };
 }
 `,

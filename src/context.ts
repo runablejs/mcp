@@ -4,6 +4,7 @@ import {
   RunableInspectorUnavailableError,
   RunableProjectError,
 } from "./errors.js";
+import { withProjectOutputRedirect } from "./project-output-redirect.js";
 import { resolveProjectInspectorFactory } from "./runable-resolution.js";
 import {
   findMissingInspectorMethod,
@@ -31,9 +32,16 @@ export async function createRunableContext(
   // `RunableInspectorLike` — but that type is only as trustworthy as the
   // dynamic import that produced the function itself, so the actual value
   // is re-verified below rather than trusted on the type's word alone.
+  //
+  // This resolves the project's config graph, which executes its
+  // runable.config.* file(s) and every module's setup() hook — see
+  // project-output-redirect.ts for why that needs to happen with stdout
+  // redirected to stderr.
   let inspector: unknown;
   try {
-    inspector = await createRunableInspector({ rootDir: resolvedRootDir });
+    inspector = await withProjectOutputRedirect(() =>
+      createRunableInspector({ rootDir: resolvedRootDir }),
+    );
   } catch (error) {
     throw new RunableProjectError(resolvedRootDir, error);
   }
