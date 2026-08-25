@@ -190,6 +190,7 @@ describe("resolve_route", () => {
       runable: {
         project: {
           rootDir: "/x",
+          runableVersion: "1.0.0-alpha.4",
           ssr: true,
           paths: { appDir: "app", generatedDir: ".app", outputDir: ".output" },
         },
@@ -204,6 +205,7 @@ describe("resolve_route", () => {
     });
     expect(result.isError).toBe(true);
     expect(JSON.stringify(result.content)).toMatch(/resolveRoute/);
+    expect(JSON.stringify(result.content)).toMatch(/runable@1\.0\.0-alpha\.4/);
 
     // The rest of the server keeps working — resolveRoute() is checked
     // per-call, not gated behind at context creation like the other 8

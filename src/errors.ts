@@ -11,6 +11,15 @@ export class RunableMcpError extends Error {
   override readonly name: string = "RunableMcpError";
 }
 
+/** The requested project root does not exist or is not a directory. */
+export class InvalidProjectRootError extends RunableMcpError {
+  override readonly name = "InvalidProjectRootError";
+
+  constructor(rootDir: string, cause?: unknown) {
+    super(`Invalid Runable project directory "${rootDir}".`, { cause });
+  }
+}
+
 /** No `runable` package could be resolved from the inspected project at all. */
 export class RunableNotInstalledError extends RunableMcpError {
   override readonly name = "RunableNotInstalledError";

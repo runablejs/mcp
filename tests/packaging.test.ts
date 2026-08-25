@@ -35,6 +35,7 @@ import {
   readFile,
   rename,
   rm,
+  stat,
   symlink,
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -136,7 +137,7 @@ afterAll(async () => {
 });
 
 describe("the pnpm pack tarball, installed like a real dependency", () => {
-  it("includes dist output and type declarations, and ships an executable bin", () => {
+  it("includes only the intended runtime files and ships an executable bin", async () => {
     expect(existsSync(join(extractedPackageDir, "dist", "bin.js"))).toBe(true);
     expect(existsSync(join(extractedPackageDir, "dist", "index.js"))).toBe(
       true,
@@ -144,6 +145,41 @@ describe("the pnpm pack tarball, installed like a real dependency", () => {
     expect(existsSync(join(extractedPackageDir, "dist", "index.d.ts"))).toBe(
       true,
     );
+    expect(existsSync(join(extractedPackageDir, "COMPATIBILITY.md"))).toBe(
+      true,
+    );
+    expect(existsSync(join(extractedPackageDir, "CLIENTS.md"))).toBe(true);
+    expect(existsSync(join(extractedPackageDir, "SECURITY.md"))).toBe(true);
+    expect(existsSync(join(extractedPackageDir, "README.md"))).toBe(true);
+    expect(existsSync(join(extractedPackageDir, "LICENSE"))).toBe(true);
+    expect(existsSync(join(extractedPackageDir, "src"))).toBe(false);
+    expect(existsSync(join(extractedPackageDir, "tests"))).toBe(false);
+
+    const binPath = join(extractedPackageDir, "dist", "bin.js");
+    const [binSource, binStat] = await Promise.all([
+      readFile(binPath, "utf8"),
+      stat(binPath),
+    ]);
+    expect(binSource.startsWith("#!/usr/bin/env node\n")).toBe(true);
+    expect(binStat.mode & 0o111).not.toBe(0);
+  });
+
+  it("ships a coherent publish manifest", async () => {
+    const manifest = JSON.parse(
+      await readFile(join(extractedPackageDir, "package.json"), "utf8"),
+    ) as {
+      bin?: Record<string, string>;
+      exports?: Record<string, unknown>;
+      dependencies?: Record<string, string>;
+    };
+
+    expect(manifest.bin).toEqual({ "runable-mcp": "./dist/bin.js" });
+    expect(manifest.exports).toHaveProperty(".");
+    expect(manifest.dependencies).toEqual({
+      "@modelcontextprotocol/server": "^2.0.0",
+      zod: "^4.4.3",
+    });
+    expect(manifest.dependencies).not.toHaveProperty("runable");
   });
 
   it("does not publish a public .d.ts that imports from runable or runable/inspector", async () => {
@@ -153,6 +189,15 @@ describe("the pnpm pack tarball, installed like a real dependency", () => {
     );
 
     expect(dts).not.toMatch(/from\s+["']runable(\/|["'])/);
+  });
+
+  it("exports the reusable stdio entry point used by CLI integrations", async () => {
+    const publishedModule = (await import(
+      join(extractedPackageDir, "dist", "index.js")
+    )) as Record<string, unknown>;
+
+    expect(publishedModule.runRunableMcpServer).toBeTypeOf("function");
+    expect(publishedModule.InvalidProjectRootError).toBeTypeOf("function");
   });
 
   it("runs via its installed bin, resolves the consumer project's runable, and answers get_project", async () => {

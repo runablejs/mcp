@@ -1,6 +1,6 @@
 {
   "name": "@runablejs/mcp",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Official Model Context Protocol server for Runable projects.",
   "type": "module",
   "bin": {
@@ -15,7 +15,10 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "COMPATIBILITY.md",
+    "CLIENTS.md",
+    "SECURITY.md"
   ],
   "engines": {
     "node": "^22.18.0 || >=24.12.0"
@@ -40,6 +43,9 @@
   },
   "scripts": {
     "build": "tsdown",
+    "changeset": "changeset",
+    "version-packages": "changeset version && pnpm install --no-frozen-lockfile",
+    "release:local": "pnpm build && changeset publish",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --check .",
@@ -53,6 +59,8 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^1.0.0",
+    "@changesets/cli": "^3.0.0",
     "@eslint/js": "^10.0.1",
     "@modelcontextprotocol/client": "^2.0.0",
     "@types/node": "^24.0.0",

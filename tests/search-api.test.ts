@@ -103,6 +103,50 @@ describe("searchDocs()", () => {
       expect(results[i - 1]!.score).toBeGreaterThanOrEqual(results[i]!.score);
     }
   });
+
+  it("weights a title match above the same term occurring only in body content", () => {
+    const index: DocsIndexEntry[] = [
+      {
+        title: "Routing",
+        url: "https://example.com/routing",
+        section: "Routes and navigation",
+        excerpt: "Configure application routes.",
+        content: "Configure application routes and navigation.",
+        category: "guide",
+      },
+      {
+        title: "General concepts",
+        url: "https://example.com/general",
+        section: "Overview",
+        excerpt: "An overview mentioning routing.",
+        content: "This longer overview mentions routing among many concepts.",
+        category: "guide",
+      },
+    ];
+
+    expect(searchDocs(index, "routing", 2)[0]?.title).toBe("Routing");
+  });
+
+  it("splits camelCase API symbols so natural-language terms can find them", () => {
+    const results = searchDocs(SYNTHETIC_INDEX, "async data", 5);
+
+    expect(results[0]?.title).toBe("useAsyncData");
+  });
+
+  it("normalizes accents in queries", () => {
+    const index: DocsIndexEntry[] = [
+      {
+        title: "Configuration",
+        url: "https://example.com/configuration",
+        section: "Metadata",
+        excerpt: "Configure page metadata.",
+        content: "Configure page metadata.",
+        category: "guide",
+      },
+    ];
+
+    expect(searchDocs(index, "métadata", 1)[0]?.title).toBe("Configuration");
+  });
 });
 
 describe("the embedded documentation index itself", () => {

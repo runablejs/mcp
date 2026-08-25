@@ -22,6 +22,9 @@ Claude / Codex / Cursor / ...
 
 Because the Inspector is resolved from the **inspected project's own `node_modules`** — never bundled into this package — `@runablejs/mcp` always reflects the exact Runable version that project has installed.
 
+See [COMPATIBILITY.md](./COMPATIBILITY.md) for the tested Runable versions,
+the distinction between base and full tool support, and the versioning policy.
+
 ## Installation
 
 ```bash
@@ -38,11 +41,21 @@ Run it from inside a Runable project:
 runable-mcp
 ```
 
+If the project uses a Runable CLI version that provides the MCP integration,
+the equivalent command is:
+
+```bash
+runable mcp
+```
+
 Or point it at a project elsewhere on disk:
 
 ```bash
 runable-mcp --cwd /path/to/project
 ```
+
+For copyable Codex, Claude Code, Cursor, and GitHub Copilot configurations,
+see [CLIENTS.md](./CLIENTS.md).
 
 ```text
 Usage: runable-mcp [options]
@@ -131,7 +144,7 @@ Runs a small set of deterministic, structural checks over the project's already-
 
 ### `search_api`
 
-Full-text search over Runable's official documentation, entirely local and offline — no network call, no embeddings, no vector database. The searchable index is generated at build time from Runable's own docs and shipped inside this package, so it works even when the inspected project's `node_modules` has nothing to do with where that documentation lives. Takes `{ query, limit? }` (`limit` defaults to 5, max 20) and returns `{ query, documentationVersion, projectRunableVersion, results }`, where `documentationVersion` is the Runable version the embedded docs describe and `projectRunableVersion` is the version actually installed in the inspected project.
+Full-text search over Runable's official documentation, entirely local and offline — no network call, no embeddings, no vector database. The searchable index is generated at build time from Runable's own docs and shipped inside this package, so it works even when the inspected project's `node_modules` has nothing to do with where that documentation lives. Results are ranked with BM25F: title, section, content, and category are length-normalized and weighted independently, with API-symbol-aware camelCase tokenization. Takes `{ query, limit? }` (`limit` defaults to 5, max 20) and returns `{ query, documentationVersion, projectRunableVersion, results }`, where `documentationVersion` is the Runable version the embedded docs describe and `projectRunableVersion` is the version actually installed in the inspected project.
 
 ```json
 // Request
@@ -168,8 +181,6 @@ Full-text search over Runable's official documentation, entirely local and offli
 
 - MCP Resources: evaluate whether project state (routes, config, ...) should also be exposed as MCP resources, not just tool calls.
 - MCP Prompts: evaluate whether reusable prompt templates (e.g. "diagnose and fix") belong in this server.
-- A documented Runable/`@runablejs/mcp` compatibility policy (which Runable versions each MCP release supports, and how incompatibilities are surfaced).
-- Client integrations: documented setup for Claude Code, Codex, Cursor, and other MCP-capable agents.
 - CLI integration: a `runable mcp` subcommand in Runable's own CLI, instead of a separate `runable-mcp` binary.
 - Official documentation on runablejs.org.
 - A final security and packaging audit before a stable release.

@@ -1,9 +1,6 @@
 #!/usr/bin/env node
-import { StdioServerTransport } from "@modelcontextprotocol/server/stdio";
-
 import { CliArgumentError, HELP_TEXT, parseCliArgs } from "./cli.js";
-import { createRunableContext } from "./context.js";
-import { createRunableMcpServer } from "./server.js";
+import { runRunableMcpServer } from "./start.js";
 import { MCP_SERVER_VERSION } from "./version.js";
 
 async function main(): Promise<void> {
@@ -32,10 +29,7 @@ async function main(): Promise<void> {
   // Everything from here on runs after (or instead of) any stdout write
   // above, and stdout is now reserved for the MCP protocol: no more
   // `console.log` / `process.stdout.write` beyond this point.
-  const context = await createRunableContext(options.cwd);
-  const server = createRunableMcpServer(context);
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
+  await runRunableMcpServer(options.cwd);
 }
 
 main().catch((error: unknown) => {

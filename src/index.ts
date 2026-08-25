@@ -1,5 +1,6 @@
 export { createRunableContext, type RunableMcpContext } from "./context.js";
 export { createRunableMcpServer } from "./server.js";
+export { runRunableMcpServer } from "./start.js";
 export type {
   RunableAutoImportsInfo,
   RunableComponentInfo,
@@ -16,6 +17,7 @@ export type {
 } from "./runable-inspector.js";
 export { EXTENSION_KINDS, type ExtensionKind } from "./tools/get-extensions.js";
 export {
+  InvalidProjectRootError,
   RunableInspectorUnavailableError,
   RunableMcpError,
   RunableNotInstalledError,

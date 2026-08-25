@@ -62,10 +62,14 @@ export function registerResolveRouteTool(
       // Checked here, per call, rather than at server startup, so that
       // installation doesn't lose every other tool over one missing method.
       if (typeof context.inspector.resolveRoute !== "function") {
+        const project = await context.inspector.getProject();
+        const installedVersion = project.runableVersion
+          ? `runable@${project.runableVersion}`
+          : "the installed Runable version";
         throw new RunableInspectorUnavailableError(
           context.rootDir,
           new Error(
-            "The installed Runable Inspector does not implement resolveRoute().",
+            `${installedVersion} does not implement Inspector.resolveRoute().`,
           ),
         );
       }

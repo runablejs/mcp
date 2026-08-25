@@ -1,7 +1,10 @@
 import { afterEach, describe, expect, it } from "vitest";
+import { join } from "node:path";
+import { writeFile } from "node:fs/promises";
 
 import { createRunableContext } from "../src/context.js";
 import {
+  InvalidProjectRootError,
   RunableInspectorUnavailableError,
   RunableNotInstalledError,
   RunableProjectError,
@@ -26,6 +29,24 @@ afterEach(async () => {
 });
 
 describe("createRunableContext", () => {
+  it("rejects a nonexistent project root before package resolution can walk into an ancestor", async () => {
+    const project = await fixture({ runable: {} });
+
+    await expect(
+      createRunableContext(join(project.rootDir, "missing-project")),
+    ).rejects.toBeInstanceOf(InvalidProjectRootError);
+  });
+
+  it("rejects a file passed as the project root", async () => {
+    const project = await fixture({ runable: {} });
+    const file = join(project.rootDir, "not-a-directory");
+    await writeFile(file, "not a project\n");
+
+    await expect(createRunableContext(file)).rejects.toBeInstanceOf(
+      InvalidProjectRootError,
+    );
+  });
+
   it("creates a context for a valid Runable project", async () => {
     const project = await fixture({
       runable: { project: { rootDir: "unused", ssr: true } },
@@ -79,7 +100,9 @@ describe("createRunableContext", () => {
   });
 
   it("throws RunableInspectorUnavailableError when runable doesn't expose ./inspector", async () => {
-    const project = await fixture({ runable: { exposeInspector: false } });
+    const project = await fixture({
+      runable: { exposeInspector: false, version: "1.0.0-alpha.3" },
+    });
 
     await expect(createRunableContext(project.rootDir)).rejects.toBeInstanceOf(
       RunableInspectorUnavailableError,

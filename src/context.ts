@@ -1,6 +1,8 @@
+import { stat } from "node:fs/promises";
 import { resolve as resolvePath } from "node:path";
 
 import {
+  InvalidProjectRootError,
   RunableInspectorUnavailableError,
   RunableProjectError,
 } from "./errors.js";
@@ -25,6 +27,21 @@ export async function createRunableContext(
   rootDir: string,
 ): Promise<RunableMcpContext> {
   const resolvedRootDir = resolvePath(rootDir);
+
+  // Reject invalid roots before Node's package resolver gets involved.
+  // `createRequire(...).resolve()` walks up parent directories by design;
+  // without this guard, a typo could accidentally select a Runable package
+  // belonging to an ancestor workspace rather than the requested project.
+  try {
+    const rootStat = await stat(resolvedRootDir);
+    if (!rootStat.isDirectory()) {
+      throw new InvalidProjectRootError(resolvedRootDir);
+    }
+  } catch (error) {
+    if (error instanceof InvalidProjectRootError) throw error;
+    throw new InvalidProjectRootError(resolvedRootDir, error);
+  }
+
   const createRunableInspector =
     await resolveProjectInspectorFactory(resolvedRootDir);
 
