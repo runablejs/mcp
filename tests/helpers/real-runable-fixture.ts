@@ -43,9 +43,19 @@ function ensureRealRunableInstalled(): Promise<string> {
       join(templateDir, "package.json"),
       JSON.stringify({ name: "real-runable-template", private: true }),
     );
+    // Use the repository's package manager here as well. npm's Arborist can
+    // fail with `Cannot read properties of null (reading 'edgesOut')` on
+    // GitHub's Node 22/24 images while resolving this isolated fixture. pnpm
+    // is already provisioned by CI and gives the fixture the same dependency
+    // resolver as the project under test.
     await execFileAsync(
-      "npm",
-      ["install", "--no-audit", "--no-fund", `runable@${REAL_RUNABLE_VERSION}`],
+      "pnpm",
+      [
+        "add",
+        "--ignore-workspace",
+        "--save-exact",
+        `runable@${REAL_RUNABLE_VERSION}`,
+      ],
       { cwd: templateDir, timeout: 300_000 },
     );
     return join(templateDir, "node_modules");
