@@ -1,6 +1,6 @@
 {
   "name": "@runablejs/mcp",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.0",
   "description": "Official Model Context Protocol server for Runable projects.",
   "type": "module",
   "bin": {
